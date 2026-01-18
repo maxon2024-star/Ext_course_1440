@@ -30,6 +30,11 @@ public class SatelliteConstellation {
 
     @Override
     public String toString() {
-        return satellites.toString();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Группировка '").append(constellationName).append("' содержит спутники:\n");
+        for (Satellite satellite : satellites) {
+            sb.append("  ").append(satellite.toString()).append("\n");
+        }
+        return sb.toString();
     }
 }

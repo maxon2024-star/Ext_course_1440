@@ -1,29 +1,25 @@
 public abstract class Satellite {
     protected String name;
-    protected boolean isActive;
-    protected double batteryLevel;
+    protected SatelliteState state;
+    protected EnergySystem energy;
 
     public Satellite(String name, double batteryLevel) {
         this.name = name;
-        this.batteryLevel = batteryLevel;
-        this.isActive = false;
+        this.energy = new EnergySystem(batteryLevel);
+        this.state = new SatelliteState(energy);
     }
 
     public boolean activate() {
-        if (batteryLevel > 0.2) {
-            isActive = true;
-            return true;
-        }
-        return false;
+        return state.activate();
     }
 
     public void deactivate() {
-        isActive = false;
+        state.deactivate();
     }
 
-    public void consumeBattery(double amount) {
-        batteryLevel -= amount;
-        if (batteryLevel <= 0.2) {
+    protected void consumeBattery(double amount) {
+        energy.consume(amount);
+        if (state.requiresDeactivation()) {
             deactivate();
         }
     }
@@ -33,7 +29,7 @@ public abstract class Satellite {
     @Override
     public String toString() {
         return String.format("%s{name='%s', isActive=%b, batteryLevel=%.2f}",
-                this.getClass().getSimpleName(), name, isActive, batteryLevel);
+                this.getClass().getSimpleName(), name, state.isActive(), energy.getBatteryLevel());
     }
 
     public String getName() {
@@ -41,10 +37,10 @@ public abstract class Satellite {
     }
 
     public boolean isActive() {
-        return isActive;
+        return state.isActive();
     }
 
     public double getBatteryLevel() {
-        return batteryLevel;
+        return energy.getBatteryLevel();
     }
 }

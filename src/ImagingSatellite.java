@@ -10,7 +10,7 @@ public class ImagingSatellite extends Satellite {
 
     @Override
     protected void performMission() {
-        if (isActive) {
+        if (state.isActive()) {
             System.out.printf("%s: Съемка территории с разрешением %.1f м/пиксель%n", name, resolution);
             takePhoto();
             consumeBattery(0.08);
@@ -20,7 +20,7 @@ public class ImagingSatellite extends Satellite {
     }
 
     public void takePhoto() {
-        if (isActive) {
+        if (state.isActive()) {
             photosTaken++;
             System.out.printf("%s: Снимок #%d сделан!%n", name, photosTaken);
         }
@@ -37,6 +37,6 @@ public class ImagingSatellite extends Satellite {
     @Override
     public String toString() {
         return String.format("ImagingSatellite{resolution=%.1f, photosTaken=%d, name='%s', isActive=%b, batteryLevel=%.2f}",
-                resolution, photosTaken, name, isActive, batteryLevel);
+                resolution, photosTaken, name, state.isActive(), energy.getBatteryLevel());
     }
 }

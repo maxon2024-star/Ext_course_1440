@@ -8,7 +8,7 @@ public class CommunicationSatellite extends Satellite {
 
     @Override
     protected void performMission() {
-        if (isActive) {
+        if (state.isActive()) {
             System.out.printf("%s: Передача данных со скоростью %.1f Мбит/с%n", name, bandWidth);
             sendData(bandWidth);
             consumeBattery(0.05);
@@ -18,7 +18,7 @@ public class CommunicationSatellite extends Satellite {
     }
 
     public void sendData(double amount) {
-        if (isActive) {
+        if (state.isActive()) {
             System.out.printf("%s: Отправил %.1f Мбит данных!%n", name, amount);
         }
     }
@@ -30,6 +30,6 @@ public class CommunicationSatellite extends Satellite {
     @Override
     public String toString() {
         return String.format("CommunicationSatellite{bandwidth=%.1f, name='%s', isActive=%b, batteryLevel=%.2f}",
-                bandWidth, name, isActive, batteryLevel);
+                bandWidth, name, state.isActive(), energy.getBatteryLevel());
     }
 }
