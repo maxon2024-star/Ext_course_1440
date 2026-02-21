@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Тесты метода getAllConstellations()" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-21T05:50:32.409Z" hostname="ZADEBAAV" time="0.005">
+  <properties/>
+  <testcase name="Получение всех группировок должно возвращать все сохранённые группировки" classname="seminars.repository.ConstellationRepositoryUnitTest$GetAllConstellationsTests" time="0.002"/>
+  <testcase name="Получение всех группировок из пустого репозитория должно возвращать пустую карту" classname="seminars.repository.ConstellationRepositoryUnitTest$GetAllConstellationsTests" time="0.001"/>
+  <testcase name="Получение всех группировок должно возвращать копию данных" classname="seminars.repository.ConstellationRepositoryUnitTest$GetAllConstellationsTests" time="0.001"/>
+  <system-out><![CDATA[2026-02-21T08:50:32.411+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+2026-02-21T08:50:32.411+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-2
+2026-02-21T08:50:32.414+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SpaceOperationCenterService - Мок тесты" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-02-21T05:50:32.584Z" hostname="ZADEBAAV" time="0.077">
+  <properties/>
+  <testcase name="addSatelliteToConstellation с существующей группировкой должен добавлять спутник" classname="seminars.service.SpaceOperationCenterServiceMockTest" time="0.033"/>
+  <testcase name="executeConstellationMission должен выполнять миссии всех спутников" classname="seminars.service.SpaceOperationCenterServiceMockTest" time="0.006"/>
+  <testcase name="constellationExists должен возвращать результат из репозитория" classname="seminars.service.SpaceOperationCenterServiceMockTest" time="0.002"/>
+  <testcase name="activateAllSatellites должен активировать все спутники в группировке" classname="seminars.service.SpaceOperationCenterServiceMockTest" time="0.003"/>
+  <testcase name="createAndSaveConstellation должен вызывать save на репозитории" classname="seminars.service.SpaceOperationCenterServiceMockTest" time="0.005"/>
+  <testcase name="getConstellationCount должен возвращать количество из репозитория" classname="seminars.service.SpaceOperationCenterServiceMockTest" time="0.003"/>
+  <testcase name="addSatelliteToConstellation с несуществующей группировкой не должен выбрасывать исключения" classname="seminars.service.SpaceOperationCenterServiceMockTest" time="0.02"/>
+  <system-out><![CDATA[2026-02-21T08:50:32.607+03:00  INFO 28380 --- [    Test worker] s.service.SpaceOperationCenterService    : Добавлен спутник Спутник-Тест в группировку Орбита-Тест
+✅ Спутник-Тест: Активация успешна
+2026-02-21T08:50:32.622+03:00  INFO 28380 --- [    Test worker] s.service.SpaceOperationCenterService    : === ВЫПОЛНЕНИЕ МИССИЙ ДЛЯ ГРУППИРОВКИ: Орбита-Тест ===
+2026-02-21T08:50:32.622+03:00  INFO 28380 --- [    Test worker] s.service.SpaceOperationCenterService    : ВЫПОЛНЕНИЕ МИССИЙ ГРУППИРОВКИ ОРБИТА-ТЕСТ
+2026-02-21T08:50:32.622+03:00  INFO 28380 --- [    Test worker] s.service.SpaceOperationCenterService    : ==================================================
+Спутник-Тест: Передача данных со скоростью 500.0 Мбит/с
+Спутник-Тест: Отправил 500.0 Мбит данных!
+2026-02-21T08:50:32.629+03:00  INFO 28380 --- [    Test worker] s.service.SpaceOperationCenterService    : === АКТИВАЦИЯ СПУТНИКОВ В ГРУППИРОВКЕ: Орбита-Тест ===
+✅ Спутник-Тест: Активация успешна
+2026-02-21T08:50:32.634+03:00  INFO 28380 --- [    Test worker] s.service.SpaceOperationCenterService    : Создана спутниковая группировка: Орбита-Тест
+2026-02-21T08:50:32.646+03:00 ERROR 28380 --- [    Test worker] s.service.SpaceOperationCenterService    : Группировка 'Орбита-Тест' не найдена
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

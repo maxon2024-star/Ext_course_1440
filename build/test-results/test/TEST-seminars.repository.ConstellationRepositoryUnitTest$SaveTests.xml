@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Тесты метода save()" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-21T05:50:32.432Z" hostname="ZADEBAAV" time="0.007">
+  <properties/>
+  <testcase name="Сохранение нескольких группировок должно увеличивать счётчик" classname="seminars.repository.ConstellationRepositoryUnitTest$SaveTests" time="0.002"/>
+  <testcase name="Сохранение новой группировки должно успешно добавлять её в репозиторий" classname="seminars.repository.ConstellationRepositoryUnitTest$SaveTests" time="0.002"/>
+  <testcase name="Сохранение группировки с тем же именем должно обновлять существующую" classname="seminars.repository.ConstellationRepositoryUnitTest$SaveTests" time="0.002"/>
+  <system-out><![CDATA[2026-02-21T08:50:32.433+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+2026-02-21T08:50:32.434+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-2
+2026-02-21T08:50:32.436+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+2026-02-21T08:50:32.439+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+2026-02-21T08:50:32.439+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
