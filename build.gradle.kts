@@ -1,43 +1,53 @@
 plugins {
-    id("java")
+    java
     id("org.springframework.boot") version "3.4.2"
     id("io.spring.dependency-management") version "1.1.7"
+    jacoco
 }
 
 group = "seminars"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
-
-//tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
-//    mainClass = "Main"
-//}
-//
-//tasks.named<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun") {
-//    mainClass = "Main"
-//}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
-}
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    // Spring Boot
     implementation("org.springframework.boot:spring-boot-starter")
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    // Lombok
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
+    // Testing
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.mockito:mockito-core")
+    testImplementation("org.mockito:mockito-junit-jupiter")
+    testCompileOnly("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok")
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-tasks.named<Jar>("jar") {
-    manifest {
-        attributes["Main-Class"] = "Main"
+// JaCoCo конфигурация
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+        csv.required.set(false)
     }
+}
+
+jacoco {
+    toolVersion = "0.8.12"
 }

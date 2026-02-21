@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Тесты изоляции данных между тестами" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-02-21T05:50:29.837Z" hostname="ZADEBAAV" time="1.295">
+  <properties/>
+  <testcase name="Данные между тестами должны быть изолированы" classname="seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests" time="1.285"/>
+  <testcase name="После setUp репозиторий должен быть пустым" classname="seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests" time="0.007"/>
+  <system-out><![CDATA[08:50:28.527 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests]: DataIsolationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:50:28.537 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration seminars.Main for test class seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.2)
+
+2026-02-21T08:50:29.034+03:00  INFO 28380 --- [    Test worker] r.ConstellationRepositoryIntegrationTest : Starting ConstellationRepositoryIntegrationTest using Java 21.0.10 with PID 28380 (started by MaxZ in C:\Users\MaxZ\IdeaProjects\Ext_course_1440)
+2026-02-21T08:50:29.041+03:00  INFO 28380 --- [    Test worker] r.ConstellationRepositoryIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+2026-02-21T08:50:29.826+03:00  INFO 28380 --- [    Test worker] r.ConstellationRepositoryIntegrationTest : Started ConstellationRepositoryIntegrationTest in 1.181 seconds (process running for 4.003)
+2026-02-21T08:50:31.089+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-02-21T08:50:31.095+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-02-21T08:50:31.128+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\MaxZ\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.15.11\a38b16385e867f59a641330f0362ebe742788ed8\byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
