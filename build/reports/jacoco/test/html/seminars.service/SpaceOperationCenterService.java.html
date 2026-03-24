@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SpaceOperationCenterService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ext_course_1440</a> &gt; <a href="index.source.html" class="el_package">seminars.service</a> &gt; <span class="el_source">SpaceOperationCenterService.java</span></div><h1>SpaceOperationCenterService.java</h1><pre class="source lang-java linenums">package seminars.service;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import seminars.dto.AddSatelliteRequest;
+import seminars.dto.MissionRequest;
+import seminars.satellite.Satellite;
+import seminars.annotation.LogExecutionTime;
+
+<span class="fc" id="L11">@Slf4j</span>
+@Service
+@RequiredArgsConstructor
+public class SpaceOperationCenterService {
+
+    private final ConstellationService constellationService;
+    private final SatelliteService satelliteService;
+
+    // Применяем нашу будущую аннотацию-декоратор
+    @LogExecutionTime
+    public void addSatellite(AddSatelliteRequest request) {
+<span class="nc" id="L22">        log.info(&quot;ФАСАД: Обработка запроса на добавление спутника в группировку {}&quot;, request.getConstellationName());</span>
+
+        // 1. Создаем группировку, если её еще нет
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        if (!constellationService.constellationExists(request.getConstellationName())) {</span>
+<span class="nc" id="L26">            constellationService.createAndSaveConstellation(request.getConstellationName());</span>
+        }
+
+        // 2. Создаем сам спутник через фабрику
+<span class="nc" id="L30">        Satellite newSatellite = satelliteService.createSatellite(request.getSatelliteParam());</span>
+
+        // 3. Добавляем спутник в группировку
+<span class="nc" id="L33">        constellationService.addSatelliteToConstellation(request.getConstellationName(), newSatellite);</span>
+<span class="nc" id="L34">    }</span>
+
+    @LogExecutionTime
+    public void executeMission(MissionRequest request) {
+<span class="nc" id="L38">        log.info(&quot;ФАСАД: Обработка запроса на выполнение миссии для группировки {}&quot;, request.getConstellationName());</span>
+
+        // Сначала активируем все спутники перед миссией (агрегация логики)
+<span class="nc" id="L41">        constellationService.activateAllSatellites(request.getConstellationName());</span>
+
+        // Затем выполняем саму миссию
+<span class="nc" id="L44">        constellationService.executeConstellationMission(request.getConstellationName());</span>
+<span class="nc" id="L45">    }</span>
+
+    // Дополнительный метод для Фасада: комплексная подготовка и вывод статуса
+    @LogExecutionTime
+    public void prepareAndReportSystem(String constellationName) {
+<span class="nc" id="L50">        log.info(&quot;ФАСАД: Комплексная проверка и отчет по группировке {}&quot;, constellationName);</span>
+<span class="nc" id="L51">        constellationService.activateAllSatellites(constellationName);</span>
+<span class="nc" id="L52">        constellationService.showConstellationStatus(constellationName);</span>
+<span class="nc" id="L53">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

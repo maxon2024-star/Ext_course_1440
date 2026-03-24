@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seminars.satellites.factory.SatelliteFactoryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:36:25.269Z" hostname="ZADEBAAV" time="0.007">
+  <properties/>
+  <testcase name="testFactoryThrowsExceptionOnWrongParamType()" classname="seminars.satellites.factory.SatelliteFactoryTest" time="0.004"/>
+  <testcase name="testCommunicationSatelliteFactoryCreatesCorrectSatellite()" classname="seminars.satellites.factory.SatelliteFactoryTest" time="0.001"/>
+  <testcase name="testImagingSatelliteFactoryCreatesCorrectSatellite()" classname="seminars.satellites.factory.SatelliteFactoryTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

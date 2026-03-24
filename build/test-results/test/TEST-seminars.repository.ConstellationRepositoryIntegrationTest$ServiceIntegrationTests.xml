@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Интеграционные тесты сервиса с репозиторием" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:36:24.701Z" hostname="ZADEBAAV" time="0.045">
+  <properties/>
+  <testcase name="Добавление спутников в разные группировки через сервис" classname="seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests" time="0.01"/>
+  <testcase name="Полный жизненный цикл через сервис: создание -&gt; добавление спутников -&gt; активация -&gt; миссия" classname="seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests" time="0.008"/>
+  <testcase name="Активация и выполнение миссий для группировки через сервис" classname="seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests" time="0.006"/>
+  <testcase name="Показ статуса группировки через сервис" classname="seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests" time="0.007"/>
+  <testcase name="Операции с несуществующей группировкой через сервис" classname="seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests" time="0.006"/>
+  <testcase name="Создание нескольких группировок через сервис" classname="seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests" time="0.003"/>
+  <system-out><![CDATA[2026-03-24T20:36:24.699+03:00  INFO 24048 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests]: ServiceIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-24T20:36:24.701+03:00  INFO 24048 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration seminars.Main for test class seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests
+2026-03-24T20:36:24.706+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:36:24.706+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.706+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Создана спутниковая группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.706+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-2
+2026-03-24T20:36:24.706+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Создана спутниковая группировка: Орбита-Интеграция-2
+2026-03-24T20:36:24.715+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Добавлен спутник Спутник-Тест-1 в группировку Орбита-Интеграция-1
+2026-03-24T20:36:24.715+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Добавлен спутник Спутник-Тест-2 в группировку Орбита-Интеграция-2
+2026-03-24T20:36:24.715+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:36:24.715+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.722+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Создана спутниковая группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.722+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Добавлен спутник Спутник-Тест-1 в группировку Орбита-Интеграция-1
+2026-03-24T20:36:24.722+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : === АКТИВАЦИЯ СПУТНИКОВ В ГРУППИРОВКЕ: Орбита-Интеграция-1 ===
+✅ Спутник-Тест-1: Активация успешна
+2026-03-24T20:36:24.722+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : === ВЫПОЛНЕНИЕ МИССИЙ ДЛЯ ГРУППИРОВКИ: Орбита-Интеграция-1 ===
+2026-03-24T20:36:24.722+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : ВЫПОЛНЕНИЕ МИССИЙ ГРУППИРОВКИ ОРБИТА-ИНТЕГРАЦИЯ-1
+2026-03-24T20:36:24.722+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : ==================================================
+Спутник-Тест-1: Передача данных со скоростью 600.0 Мбит/с
+Спутник-Тест-1: Отправил 600.0 Мбит данных!
+2026-03-24T20:36:24.730+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:36:24.730+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.730+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Создана спутниковая группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.730+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Добавлен спутник Спутник-Тест-1 в группировку Орбита-Интеграция-1
+2026-03-24T20:36:24.730+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : === АКТИВАЦИЯ СПУТНИКОВ В ГРУППИРОВКЕ: Орбита-Интеграция-1 ===
+✅ Спутник-Тест-1: Активация успешна
+2026-03-24T20:36:24.730+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : === ВЫПОЛНЕНИЕ МИССИЙ ДЛЯ ГРУППИРОВКИ: Орбита-Интеграция-1 ===
+2026-03-24T20:36:24.730+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : ВЫПОЛНЕНИЕ МИССИЙ ГРУППИРОВКИ ОРБИТА-ИНТЕГРАЦИЯ-1
+2026-03-24T20:36:24.730+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : ==================================================
+Спутник-Тест-1: Передача данных со скоростью 600.0 Мбит/с
+Спутник-Тест-1: Отправил 600.0 Мбит данных!
+2026-03-24T20:36:24.737+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:36:24.738+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.738+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Создана спутниковая группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.738+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Добавлен спутник Спутник-Тест-1 в группировку Орбита-Интеграция-1
+2026-03-24T20:36:24.739+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Добавлен спутник Спутник-Тест-2 в группировку Орбита-Интеграция-1
+2026-03-24T20:36:24.739+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : === СТАТУС ГРУППИРОВКИ: Орбита-Интеграция-1 ===
+2026-03-24T20:36:24.739+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Количество спутников: 2
+2026-03-24T20:36:24.739+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : SatelliteState(isActive=false, statusMessage=Не активирован)
+2026-03-24T20:36:24.741+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : SatelliteState(isActive=false, statusMessage=Не активирован)
+2026-03-24T20:36:24.745+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:36:24.747+03:00 ERROR 24048 --- [    Test worker] seminars.service.ConstellationService    : Группировка 'Несуществующая' не найдена
+2026-03-24T20:36:24.747+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : === АКТИВАЦИЯ СПУТНИКОВ В ГРУППИРОВКЕ: Несуществующая ===
+2026-03-24T20:36:24.747+03:00 ERROR 24048 --- [    Test worker] seminars.service.ConstellationService    : Группировка 'Несуществующая' не найдена
+2026-03-24T20:36:24.747+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : === ВЫПОЛНЕНИЕ МИССИЙ ДЛЯ ГРУППИРОВКИ: Несуществующая ===
+2026-03-24T20:36:24.747+03:00 ERROR 24048 --- [    Test worker] seminars.service.ConstellationService    : Группировка 'Несуществующая' не найдена
+2026-03-24T20:36:24.747+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : === СТАТУС ГРУППИРОВКИ: Несуществующая ===
+2026-03-24T20:36:24.747+03:00 ERROR 24048 --- [    Test worker] seminars.service.ConstellationService    : Группировка 'Несуществующая' не найдена
+2026-03-24T20:36:24.747+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:36:24.747+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.747+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Создана спутниковая группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.747+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-2
+2026-03-24T20:36:24.747+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Создана спутниковая группировка: Орбита-Интеграция-2
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
