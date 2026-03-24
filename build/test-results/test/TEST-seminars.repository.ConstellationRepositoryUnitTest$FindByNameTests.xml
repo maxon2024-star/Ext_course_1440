@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Тесты метода findByName()" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-03-24T12:27:53.860Z" hostname="ZADEBAAV" time="0.006">
+  <properties/>
+  <testcase name="Поиск существующей группировки должен возвращать Optional с значением" classname="seminars.repository.ConstellationRepositoryUnitTest$FindByNameTests" time="0.002"/>
+  <testcase name="Поиск несуществующей группировки должен возвращать пустой Optional" classname="seminars.repository.ConstellationRepositoryUnitTest$FindByNameTests" time="0.001"/>
+  <testcase name="Поиск по null имени должен возвращать пустой Optional" classname="seminars.repository.ConstellationRepositoryUnitTest$FindByNameTests" time="0.001"/>
+  <system-out><![CDATA[2026-03-24T15:27:53.862+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

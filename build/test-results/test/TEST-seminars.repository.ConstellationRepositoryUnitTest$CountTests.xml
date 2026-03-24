@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Тесты метода count()" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-03-24T12:27:53.742Z" hostname="ZADEBAAV" time="0.005">
+  <properties/>
+  <testcase name="Счётчик пустого репозитория должен быть равен 0" classname="seminars.repository.ConstellationRepositoryUnitTest$CountTests" time="0.001"/>
+  <testcase name="Счётчик должен соответствовать количеству сохранённых группировок" classname="seminars.repository.ConstellationRepositoryUnitTest$CountTests" time="0.003"/>
+  <system-out><![CDATA[2026-03-24T15:27:53.745+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+2026-03-24T15:27:53.746+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-2
+2026-03-24T15:27:53.746+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-3
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
