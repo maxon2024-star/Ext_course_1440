@@ -10,7 +10,7 @@ import seminars.satellite.factory.ImagingSatelliteFactory;
 import seminars.satellite.factory.SatelliteFactory;
 import seminars.satellite.param.CommunicationSatelliteParam;
 import seminars.satellite.param.ImagingSatelliteParam;
-import seminars.service.SpaceOperationCenterService;
+import seminars.service.ConstellationService;
 
 @SpringBootApplication
 <span class="fc" id="L16">public class Main {</span>
@@ -22,7 +22,7 @@ import seminars.service.SpaceOperationCenterService;
 
         try {
 <span class="nc" id="L24">            ConstellationRepository constellationRepository = context.getBean(ConstellationRepository.class);</span>
-<span class="nc" id="L25">            SpaceOperationCenterService operationCenterService = context.getBean(SpaceOperationCenterService.class);</span>
+<span class="nc" id="L25">            ConstellationService operationCenterService = context.getBean(ConstellationService.class);</span>
 
             // Инициализация фабрик
 <span class="nc" id="L28">            SatelliteFactory commFactory = new CommunicationSatelliteFactory();</span>

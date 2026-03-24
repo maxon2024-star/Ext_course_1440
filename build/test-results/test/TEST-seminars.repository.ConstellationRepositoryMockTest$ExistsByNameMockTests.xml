@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Тесты метода existsByName() с моками" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:13:23.083Z" hostname="ZADEBAAV" time="0.01">
+<testsuite name="Тесты метода existsByName() с моками" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:36:25.165Z" hostname="ZADEBAAV" time="0.008">
   <properties/>
-  <testcase name="Мок existsByName() для существующей группировки должен возвращать true" classname="seminars.repository.ConstellationRepositoryMockTest$ExistsByNameMockTests" time="0.004"/>
-  <testcase name="Мок existsByName() для несуществующей группировки должен возвращать false" classname="seminars.repository.ConstellationRepositoryMockTest$ExistsByNameMockTests" time="0.005"/>
+  <testcase name="Мок existsByName() для существующей группировки должен возвращать true" classname="seminars.repository.ConstellationRepositoryMockTest$ExistsByNameMockTests" time="0.003"/>
+  <testcase name="Мок existsByName() для несуществующей группировки должен возвращать false" classname="seminars.repository.ConstellationRepositoryMockTest$ExistsByNameMockTests" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

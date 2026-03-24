@@ -28,6 +28,9 @@ dependencies {
     testImplementation("org.mockito:mockito-junit-jupiter")
     testCompileOnly("org.projectlombok:lombok")
     testAnnotationProcessor("org.projectlombok:lombok")
+
+    // Spring Boot AOP (для Decorator / Aspect)
+    implementation("org.springframework.boot:spring-boot-starter-aop")
 }
 
 tasks.withType<Test> {

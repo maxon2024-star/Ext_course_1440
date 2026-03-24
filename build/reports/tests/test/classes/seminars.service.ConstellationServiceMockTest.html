@@ -13,7 +13,7 @@
 <h1>SpaceOperationCenterService - Мок тесты</h1>
 <div class="breadcrumbs">
 <a href="../index.html">all</a> &gt; 
-<a href="../packages/seminars.service.html">seminars.service</a> &gt; SpaceOperationCenterServiceMockTest</div>
+<a href="../packages/seminars.service.html">seminars.service</a> &gt; ConstellationServiceMockTest</div>
 <div id="summary">
 <table>
 <tr>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.043s</div>
+<div class="counter">0.044s</div>
 <p>duration</p>
 </div>
 </td>
@@ -81,43 +81,43 @@
 <tr>
 <td class="success">activateAllSatellites должен активировать все спутники в группировке</td>
 <td class="success">activateAllSatellites_shouldActivateAllSatellites()</td>
-<td class="success">0.005s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addSatelliteToConstellation с существующей группировкой должен добавлять спутник</td>
 <td class="success">addSatelliteToConstellation_existingConstellation_shouldAddSatellite()</td>
-<td class="success">0.021s</td>
+<td class="success">0.020s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addSatelliteToConstellation с несуществующей группировкой не должен выбрасывать исключения</td>
 <td class="success">addSatelliteToConstellation_nonExistentConstellation_shouldNotThrow()</td>
-<td class="success">0.003s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">constellationExists должен возвращать результат из репозитория</td>
 <td class="success">constellationExists_shouldReturnRepositoryResult()</td>
-<td class="success">0.002s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">createAndSaveConstellation должен вызывать save на репозитории</td>
 <td class="success">createAndSaveConstellation_shouldCallRepositorySave()</td>
-<td class="success">0.003s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">executeConstellationMission должен выполнять миссии всех спутников</td>
 <td class="success">executeConstellationMission_shouldExecuteAllMissions()</td>
-<td class="success">0.006s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getConstellationCount должен возвращать количество из репозитория</td>
 <td class="success">getConstellationCount_shouldReturnRepositoryCount()</td>
-<td class="success">0.003s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -125,17 +125,17 @@
 <div class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2026-03-24T20:13:23.306+03:00  INFO 24520 --- [    Test worker] s.service.SpaceOperationCenterService    : Добавлен спутник Спутник-Тест в группировку Орбита-Тест
+<pre>2026-03-24T20:36:25.369+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Добавлен спутник Спутник-Тест в группировку Орбита-Тест
 ✅ Спутник-Тест: Активация успешна
-2026-03-24T20:13:23.325+03:00  INFO 24520 --- [    Test worker] s.service.SpaceOperationCenterService    : === ВЫПОЛНЕНИЕ МИССИЙ ДЛЯ ГРУППИРОВКИ: Орбита-Тест ===
-2026-03-24T20:13:23.325+03:00  INFO 24520 --- [    Test worker] s.service.SpaceOperationCenterService    : ВЫПОЛНЕНИЕ МИССИЙ ГРУППИРОВКИ ОРБИТА-ТЕСТ
-2026-03-24T20:13:23.325+03:00  INFO 24520 --- [    Test worker] s.service.SpaceOperationCenterService    : ==================================================
+2026-03-24T20:36:25.381+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : === ВЫПОЛНЕНИЕ МИССИЙ ДЛЯ ГРУППИРОВКИ: Орбита-Тест ===
+2026-03-24T20:36:25.382+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : ВЫПОЛНЕНИЕ МИССИЙ ГРУППИРОВКИ ОРБИТА-ТЕСТ
+2026-03-24T20:36:25.382+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : ==================================================
 Спутник-Тест: Передача данных со скоростью 500.0 Мбит/с
 Спутник-Тест: Отправил 500.0 Мбит данных!
-2026-03-24T20:13:23.333+03:00  INFO 24520 --- [    Test worker] s.service.SpaceOperationCenterService    : === АКТИВАЦИЯ СПУТНИКОВ В ГРУППИРОВКЕ: Орбита-Тест ===
+2026-03-24T20:36:25.389+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : === АКТИВАЦИЯ СПУТНИКОВ В ГРУППИРОВКЕ: Орбита-Тест ===
 ✅ Спутник-Тест: Активация успешна
-2026-03-24T20:13:23.333+03:00  INFO 24520 --- [    Test worker] s.service.SpaceOperationCenterService    : Создана спутниковая группировка: Орбита-Тест
-2026-03-24T20:13:23.339+03:00 ERROR 24520 --- [    Test worker] s.service.SpaceOperationCenterService    : Группировка 'Орбита-Тест' не найдена
+2026-03-24T20:36:25.391+03:00  INFO 24048 --- [    Test worker] seminars.service.ConstellationService    : Создана спутниковая группировка: Орбита-Тест
+2026-03-24T20:36:25.402+03:00 ERROR 24048 --- [    Test worker] seminars.service.ConstellationService    : Группировка 'Орбита-Тест' не найдена
 </pre>
 </span>
 </div>
@@ -147,7 +147,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.0.0</a> at 24 мар. 2026 г., 20:13:23</p>
+<a href="https://www.gradle.org">Gradle 9.0.0</a> at 24 мар. 2026 г., 20:36:25</p>
 </div>
 </div>
 </body>

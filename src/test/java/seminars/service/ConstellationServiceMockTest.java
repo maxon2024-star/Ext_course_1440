@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 
 @DisplayName("SpaceOperationCenterService - Мок тесты")
 @ExtendWith(MockitoExtension.class)
-class SpaceOperationCenterServiceMockTest {
+class ConstellationServiceMockTest {
 
     private static final String CONSTELLATION_NAME = "Орбита-Тест";
     private static final String SATELLITE_NAME = "Спутник-Тест";
@@ -27,7 +27,7 @@ class SpaceOperationCenterServiceMockTest {
     private ConstellationRepository repositoryMock;
 
     @InjectMocks
-    private SpaceOperationCenterService service;
+    private ConstellationService service;
 
     @Test
     @DisplayName("createAndSaveConstellation должен вызывать save на репозитории")

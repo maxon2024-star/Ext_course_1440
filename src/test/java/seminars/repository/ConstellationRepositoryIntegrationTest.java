@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import seminars.constellation.SatelliteConstellation;
 import seminars.satellite.CommunicationSatellite;
 import seminars.satellite.ImagingSatellite;
-import seminars.service.SpaceOperationCenterService;
+import seminars.service.ConstellationService;
 
 import java.util.Map;
 import java.util.Optional;
@@ -31,7 +31,7 @@ class ConstellationRepositoryIntegrationTest {
     private ConstellationRepository repository;
 
     @Autowired
-    private SpaceOperationCenterService service;
+    private ConstellationService service;
 
     @BeforeEach
     @DisplayName("Очистка репозитория перед каждым тестом")

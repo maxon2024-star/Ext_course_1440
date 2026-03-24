@@ -3,79 +3,53 @@
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import seminars.repository.ConstellationRepository;
+import seminars.dto.AddSatelliteRequest;
+import seminars.dto.MissionRequest;
 import seminars.satellite.Satellite;
-import seminars.constellation.SatelliteConstellation;
+import seminars.annotation.LogExecutionTime;
 
-<span class="fc" id="L10">@Slf4j</span>
+<span class="fc" id="L11">@Slf4j</span>
 @Service
 @RequiredArgsConstructor
 public class SpaceOperationCenterService {
-    private final ConstellationRepository constellationRepository;
 
-    public SatelliteConstellation createAndSaveConstellation(String name) {
-        // Изменение: используем Builder вместо конструктора
-<span class="fc" id="L18">        SatelliteConstellation constellation = SatelliteConstellation.builder(name).build();</span>
-<span class="fc" id="L19">        constellationRepository.save(constellation);</span>
-<span class="fc" id="L20">        log.info(&quot;Создана спутниковая группировка: {}&quot;, name);</span>
-<span class="fc" id="L21">        return constellation;</span>
-    }
+    private final ConstellationService constellationService;
+    private final SatelliteService satelliteService;
 
-    public void addSatelliteToConstellation(String constellationName, Satellite satellite) {
-<span class="fc" id="L25">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
-                constellation -&gt; {
-<span class="fc" id="L27">                    constellation.addSatellite(satellite);</span>
-<span class="fc" id="L28">                    log.info(&quot;Добавлен спутник {} в группировку {}&quot;, satellite.getName(), constellationName);</span>
-<span class="fc" id="L29">                },</span>
-<span class="fc" id="L30">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
-        );
-<span class="fc" id="L32">    }</span>
+    // Применяем нашу будущую аннотацию-декоратор
+    @LogExecutionTime
+    public void addSatellite(AddSatelliteRequest request) {
+<span class="nc" id="L22">        log.info(&quot;ФАСАД: Обработка запроса на добавление спутника в группировку {}&quot;, request.getConstellationName());</span>
 
-    public void executeConstellationMission(String constellationName) {
-<span class="fc" id="L35">        log.info(&quot;=== ВЫПОЛНЕНИЕ МИССИЙ ДЛЯ ГРУППИРОВКИ: {} ===&quot;, constellationName);</span>
-<span class="fc" id="L36">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
-                constellation -&gt; {
-<span class="fc" id="L38">                    log.info(&quot;ВЫПОЛНЕНИЕ МИССИЙ ГРУППИРОВКИ {}&quot;, constellationName.toUpperCase());</span>
-<span class="fc" id="L39">                    log.info(&quot;==================================================&quot;);</span>
-<span class="fc bfc" id="L40" title="All 2 branches covered.">                    for (Satellite satellite : constellation.getSatellites()) {</span>
-<span class="fc" id="L41">                        satellite.executeMission();</span>
-<span class="fc" id="L42">                    }</span>
-<span class="fc" id="L43">                },</span>
-<span class="fc" id="L44">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
-        );
-<span class="fc" id="L46">    }</span>
+        // 1. Создаем группировку, если её еще нет
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        if (!constellationService.constellationExists(request.getConstellationName())) {</span>
+<span class="nc" id="L26">            constellationService.createAndSaveConstellation(request.getConstellationName());</span>
+        }
 
-    public void activateAllSatellites(String constellationName) {
-<span class="fc" id="L49">        log.info(&quot;=== АКТИВАЦИЯ СПУТНИКОВ В ГРУППИРОВКЕ: {} ===&quot;, constellationName);</span>
-<span class="fc" id="L50">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
-                constellation -&gt; {
-<span class="fc bfc" id="L52" title="All 2 branches covered.">                    for (Satellite satellite : constellation.getSatellites()) {</span>
-<span class="fc" id="L53">                        satellite.activate();</span>
-<span class="fc" id="L54">                    }</span>
-<span class="fc" id="L55">                },</span>
-<span class="fc" id="L56">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
-        );
-<span class="fc" id="L58">    }</span>
+        // 2. Создаем сам спутник через фабрику
+<span class="nc" id="L30">        Satellite newSatellite = satelliteService.createSatellite(request.getSatelliteParam());</span>
 
-    public void showConstellationStatus(String constellationName) {
-<span class="fc" id="L61">        log.info(&quot;=== СТАТУС ГРУППИРОВКИ: {} ===&quot;, constellationName);</span>
-<span class="fc" id="L62">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
-                constellation -&gt; {
-<span class="fc" id="L64">                    log.info(&quot;Количество спутников: {}&quot;, constellation.getSatellites().size());</span>
-<span class="fc bfc" id="L65" title="All 2 branches covered.">                    for (Satellite satellite : constellation.getSatellites()) {</span>
-<span class="fc" id="L66">                        log.info(&quot;{}&quot;, satellite.getState());</span>
-<span class="fc" id="L67">                    }</span>
-<span class="fc" id="L68">                },</span>
-<span class="fc" id="L69">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
-        );
-<span class="fc" id="L71">    }</span>
+        // 3. Добавляем спутник в группировку
+<span class="nc" id="L33">        constellationService.addSatelliteToConstellation(request.getConstellationName(), newSatellite);</span>
+<span class="nc" id="L34">    }</span>
 
-    public boolean constellationExists(String constellationName) {
-<span class="fc" id="L74">        return constellationRepository.existsByName(constellationName);</span>
-    }
+    @LogExecutionTime
+    public void executeMission(MissionRequest request) {
+<span class="nc" id="L38">        log.info(&quot;ФАСАД: Обработка запроса на выполнение миссии для группировки {}&quot;, request.getConstellationName());</span>
 
-    public int getConstellationCount() {
-<span class="fc" id="L78">        return constellationRepository.count();</span>
-    }
+        // Сначала активируем все спутники перед миссией (агрегация логики)
+<span class="nc" id="L41">        constellationService.activateAllSatellites(request.getConstellationName());</span>
+
+        // Затем выполняем саму миссию
+<span class="nc" id="L44">        constellationService.executeConstellationMission(request.getConstellationName());</span>
+<span class="nc" id="L45">    }</span>
+
+    // Дополнительный метод для Фасада: комплексная подготовка и вывод статуса
+    @LogExecutionTime
+    public void prepareAndReportSystem(String constellationName) {
+<span class="nc" id="L50">        log.info(&quot;ФАСАД: Комплексная проверка и отчет по группировке {}&quot;, constellationName);</span>
+<span class="nc" id="L51">        constellationService.activateAllSatellites(constellationName);</span>
+<span class="nc" id="L52">        constellationService.showConstellationStatus(constellationName);</span>
+<span class="nc" id="L53">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

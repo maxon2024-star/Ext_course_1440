@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.014s</div>
+<div class="counter">0.012s</div>
 <p>duration</p>
 </div>
 </td>
@@ -81,25 +81,25 @@
 <tr>
 <td class="success">Полный цикл CRUD операций через репозиторий</td>
 <td class="success">fullCrudCycle_shouldWorkCorrectly()</td>
-<td class="success">0.003s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Полный цикл: создание группировки -&gt; сохранение -&gt; поиск -&gt; проверка</td>
 <td class="success">fullLifecycle_createSaveFindVerify_shouldWorkCorrectly()</td>
-<td class="success">0.005s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Полный цикл с добавлением спутников в группировку</td>
 <td class="success">fullLifecycle_withSatellites_shouldPreserveData()</td>
-<td class="success">0.003s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getAllConstellations должен возвращать все сохранённые группировки</td>
 <td class="success">getAllConstellations_shouldReturnAllSaved()</td>
-<td class="success">0.003s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -107,21 +107,21 @@
 <div class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2026-03-24T20:13:22.614+03:00  INFO 24520 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests]: RepositoryIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-03-24T20:13:22.616+03:00  INFO 24520 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration seminars.Main for test class seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests
-2026-03-24T20:13:22.620+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-03-24T20:13:22.622+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
-2026-03-24T20:13:22.622+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-03-24T20:13:22.627+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
-2026-03-24T20:13:22.630+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-03-24T20:13:22.630+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
-2026-03-24T20:13:22.630+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-2
-2026-03-24T20:13:22.630+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
-2026-03-24T20:13:22.630+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Удалена группировка: Орбита-Интеграция-1
-2026-03-24T20:13:22.630+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-03-24T20:13:22.636+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-03-24T20:13:22.636+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
-2026-03-24T20:13:22.636+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-2
+<pre>2026-03-24T20:36:24.754+03:00  INFO 24048 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests]: RepositoryIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-24T20:36:24.754+03:00  INFO 24048 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration seminars.Main for test class seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests
+2026-03-24T20:36:24.762+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:36:24.762+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.762+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:36:24.762+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.771+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:36:24.772+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.772+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-2
+2026-03-24T20:36:24.772+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.772+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Удалена группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.772+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:36:24.775+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:36:24.776+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T20:36:24.776+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-2
 </pre>
 </span>
 </div>
@@ -133,7 +133,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.0.0</a> at 24 мар. 2026 г., 20:13:23</p>
+<a href="https://www.gradle.org">Gradle 9.0.0</a> at 24 мар. 2026 г., 20:36:25</p>
 </div>
 </div>
 </body>

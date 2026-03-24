@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Тесты метода deleteByName()" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:13:23.164Z" hostname="ZADEBAAV" time="0.004">
+<testsuite name="Тесты метода deleteByName()" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:36:25.233Z" hostname="ZADEBAAV" time="0.003">
   <properties/>
   <testcase name="Удаление существующей группировки должно уменьшать счётчик" classname="seminars.repository.ConstellationRepositoryUnitTest$DeleteByNameTests" time="0.001"/>
-  <testcase name="Удаление несуществующей группировки не должно вызывать ошибок" classname="seminars.repository.ConstellationRepositoryUnitTest$DeleteByNameTests" time="0.002"/>
-  <system-out><![CDATA[2026-03-24T20:13:23.168+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
-2026-03-24T20:13:23.168+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Удалена группировка: Орбита-1
-2026-03-24T20:13:23.170+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Удалена группировка: Несуществующая
+  <testcase name="Удаление несуществующей группировки не должно вызывать ошибок" classname="seminars.repository.ConstellationRepositoryUnitTest$DeleteByNameTests" time="0.001"/>
+  <system-out><![CDATA[2026-03-24T20:36:25.241+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+2026-03-24T20:36:25.241+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Удалена группировка: Орбита-1
+2026-03-24T20:36:25.243+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Удалена группировка: Несуществующая
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -9,12 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("SpaceOperationCenterService - Интеграционные тесты")
 @SpringBootTest
-class SpaceOperationCenterServiceIntegrationTest {
+class ConstellationServiceIntegrationTest {
 
     private static final String CONSTELLATION_NAME = "Орбита-Сервис-Тест";
 
     @Autowired
-    private SpaceOperationCenterService service;
+    private ConstellationService service;
 
     @Autowired
     private ConstellationRepository repository;
