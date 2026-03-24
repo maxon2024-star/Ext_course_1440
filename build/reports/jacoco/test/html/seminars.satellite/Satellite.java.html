@@ -13,15 +13,18 @@ public abstract class Satellite {
 <span class="fc" id="L13">    public Satellite(String name, double initialEnergy) {</span>
 <span class="fc" id="L14">        this.name = name;</span>
 <span class="fc" id="L15">        this.state = new SatelliteState(false, &quot;Не активирован&quot;);</span>
-<span class="fc" id="L16">        this.energy = new EnergySystem(initialEnergy);</span>
-<span class="fc" id="L17">    }</span>
+        // Использование паттерна Builder
+<span class="fc" id="L17">        this.energy = EnergySystem.builder()</span>
+<span class="fc" id="L18">                .batteryLevel(initialEnergy)</span>
+<span class="fc" id="L19">                .build();</span>
+<span class="fc" id="L20">    }</span>
 
     public abstract void activate();
     public abstract void executeMission();
     public abstract SatelliteState getState();
 
     public EnergySystem getEnergy() {
-<span class="fc" id="L24">        return energy;</span>
+<span class="fc" id="L27">        return energy;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

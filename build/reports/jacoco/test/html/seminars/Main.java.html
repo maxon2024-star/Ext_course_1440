@@ -4,65 +4,72 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import seminars.repository.ConstellationRepository;
-import seminars.satellite.CommunicationSatellite;
-import seminars.satellite.ImagingSatellite;
+import seminars.satellite.Satellite;
+import seminars.satellite.factory.CommunicationSatelliteFactory;
+import seminars.satellite.factory.ImagingSatelliteFactory;
+import seminars.satellite.factory.SatelliteFactory;
 import seminars.service.SpaceOperationCenterService;
 
 @SpringBootApplication
-<span class="fc" id="L12">public class Main {</span>
+<span class="fc" id="L14">public class Main {</span>
     public static void main(String[] args) {
-<span class="nc" id="L14">        System.out.println(&quot;ЗАПУСК СИСТЕМЫ УПРАВЛЕНИЯ СПУТНИКОВОЙ ГРУППИРОВКОЙ&quot;);</span>
-<span class="nc" id="L15">        System.out.println(&quot;============================================================&quot;);</span>
+<span class="nc" id="L16">        System.out.println(&quot;ЗАПУСК СИСТЕМЫ УПРАВЛЕНИЯ СПУТНИКОВОЙ ГРУППИРОВКОЙ&quot;);</span>
+<span class="nc" id="L17">        System.out.println(&quot;============================================================&quot;);</span>
 
-<span class="nc" id="L17">        ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);</span>
+<span class="nc" id="L19">        ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);</span>
 
         try {
-<span class="nc" id="L20">            ConstellationRepository constellationRepository = context.getBean(ConstellationRepository.class);</span>
-<span class="nc" id="L21">            SpaceOperationCenterService operationCenterService = context.getBean(SpaceOperationCenterService.class);</span>
+<span class="nc" id="L22">            ConstellationRepository constellationRepository = context.getBean(ConstellationRepository.class);</span>
+<span class="nc" id="L23">            SpaceOperationCenterService operationCenterService = context.getBean(SpaceOperationCenterService.class);</span>
 
-<span class="nc" id="L23">            System.out.println(&quot;\nСОЗДАНИЕ СПЕЦИАЛИЗИРОВАННЫХ СПУТНИКОВ:&quot;);</span>
-<span class="nc" id="L24">            System.out.println(&quot;---------------------------------------------&quot;);</span>
+            // Инициализация фабрик
+<span class="nc" id="L26">            SatelliteFactory commFactory = new CommunicationSatelliteFactory();</span>
+<span class="nc" id="L27">            SatelliteFactory imgFactory = new ImagingSatelliteFactory();</span>
 
-<span class="nc" id="L26">            CommunicationSatellite commSat1 = new CommunicationSatellite(&quot;Связь-1&quot;, 0.85, 500.0);</span>
-<span class="nc" id="L27">            System.out.println(&quot;Создан спутник: &quot; + commSat1.getName() + &quot; (&quot; + commSat1.getEnergy().getBatteryLevel() + &quot;)&quot;);</span>
+<span class="nc" id="L29">            System.out.println(&quot;\nСОЗДАНИЕ СПЕЦИАЛИЗИРОВАННЫХ СПУТНИКОВ (ЧЕРЕЗ ФАБРИКУ):&quot;);</span>
+<span class="nc" id="L30">            System.out.println(&quot;---------------------------------------------&quot;);</span>
 
-<span class="nc" id="L29">            CommunicationSatellite commSat2 = new CommunicationSatellite(&quot;Связь-2&quot;, 0.75, 1000.0);</span>
-<span class="nc" id="L30">            System.out.println(&quot;Создан спутник: &quot; + commSat2.getName() + &quot; (&quot; + commSat2.getEnergy().getBatteryLevel() + &quot;)&quot;);</span>
+            // Создаем спутники через фабричный метод, работая с абстракцией Satellite
+<span class="nc" id="L33">            Satellite commSat1 = commFactory.createSatellite(&quot;Связь-1&quot;, 0.85, 500.0);</span>
+<span class="nc" id="L34">            System.out.println(&quot;Создан спутник: &quot; + commSat1.getName() + &quot; (&quot; + commSat1.getEnergy().getBatteryLevel() + &quot;)&quot;);</span>
 
-<span class="nc" id="L32">            ImagingSatellite imagingSat1 = new ImagingSatellite(&quot;ДЗЗ-1&quot;, 0.92, 2.5);</span>
-<span class="nc" id="L33">            System.out.println(&quot;Создан спутник: &quot; + imagingSat1.getName() + &quot; (&quot; + imagingSat1.getEnergy().getBatteryLevel() + &quot;)&quot;);</span>
+<span class="nc" id="L36">            Satellite commSat2 = commFactory.createSatellite(&quot;Связь-2&quot;, 0.75, 1000.0);</span>
+<span class="nc" id="L37">            System.out.println(&quot;Создан спутник: &quot; + commSat2.getName() + &quot; (&quot; + commSat2.getEnergy().getBatteryLevel() + &quot;)&quot;);</span>
 
-<span class="nc" id="L35">            ImagingSatellite imagingSat2 = new ImagingSatellite(&quot;ДЗЗ-2&quot;, 0.45, 1.0);</span>
-<span class="nc" id="L36">            System.out.println(&quot;Создан спутник: &quot; + imagingSat2.getName() + &quot; (&quot; + imagingSat2.getEnergy().getBatteryLevel() + &quot;)&quot;);</span>
+<span class="nc" id="L39">            Satellite imagingSat1 = imgFactory.createSatellite(&quot;ДЗЗ-1&quot;, 0.92, 2.5);</span>
+<span class="nc" id="L40">            System.out.println(&quot;Создан спутник: &quot; + imagingSat1.getName() + &quot; (&quot; + imagingSat1.getEnergy().getBatteryLevel() + &quot;)&quot;);</span>
 
-<span class="nc" id="L38">            ImagingSatellite imagingSat3 = new ImagingSatellite(&quot;ДЗЗ-3&quot;, 0.15, 5.0);</span>
-<span class="nc" id="L39">            System.out.println(&quot;Создан спутник: &quot; + imagingSat3.getName() + &quot; (&quot; + imagingSat3.getEnergy().getBatteryLevel() + &quot;)&quot;);</span>
+<span class="nc" id="L42">            Satellite imagingSat2 = imgFactory.createSatellite(&quot;ДЗЗ-2&quot;, 0.45, 1.0);</span>
+<span class="nc" id="L43">            System.out.println(&quot;Создан спутник: &quot; + imagingSat2.getName() + &quot; (&quot; + imagingSat2.getEnergy().getBatteryLevel() + &quot;)&quot;);</span>
 
-<span class="nc" id="L41">            System.out.println(&quot;---------------------------------------------&quot;);</span>
+<span class="nc" id="L45">            Satellite imagingSat3 = imgFactory.createSatellite(&quot;ДЗЗ-3&quot;, 0.15, 5.0);</span>
+<span class="nc" id="L46">            System.out.println(&quot;Создан спутник: &quot; + imagingSat3.getName() + &quot; (&quot; + imagingSat3.getEnergy().getBatteryLevel() + &quot;)&quot;);</span>
 
-<span class="nc" id="L43">            operationCenterService.createAndSaveConstellation(&quot;Орбита-1&quot;);</span>
-<span class="nc" id="L44">            operationCenterService.createAndSaveConstellation(&quot;Орбита-2&quot;);</span>
+<span class="nc" id="L48">            System.out.println(&quot;---------------------------------------------&quot;);</span>
 
-<span class="nc" id="L46">            System.out.println(&quot;---------------------------------------------&quot;);</span>
-<span class="nc" id="L47">            System.out.println(&quot;\n📡 ДОБАВЛЕНИЕ СПУТНИКОВ:&quot;);</span>
+<span class="nc" id="L50">            operationCenterService.createAndSaveConstellation(&quot;Орбита-1&quot;);</span>
+<span class="nc" id="L51">            operationCenterService.createAndSaveConstellation(&quot;Орбита-2&quot;);</span>
 
-<span class="nc" id="L49">            operationCenterService.addSatelliteToConstellation(&quot;Орбита-1&quot;, commSat1);</span>
-<span class="nc" id="L50">            operationCenterService.addSatelliteToConstellation(&quot;Орбита-1&quot;, imagingSat1);</span>
-<span class="nc" id="L51">            operationCenterService.addSatelliteToConstellation(&quot;Орбита-1&quot;, imagingSat2);</span>
-<span class="nc" id="L52">            operationCenterService.addSatelliteToConstellation(&quot;Орбита-2&quot;, commSat2);</span>
-<span class="nc" id="L53">            operationCenterService.addSatelliteToConstellation(&quot;Орбита-2&quot;, imagingSat3);</span>
+<span class="nc" id="L53">            System.out.println(&quot;---------------------------------------------&quot;);</span>
+<span class="nc" id="L54">            System.out.println(&quot;\n📡 ДОБАВЛЕНИЕ СПУТНИКОВ:&quot;);</span>
 
-<span class="nc" id="L55">            System.out.println(&quot;-----------------------------------&quot;);</span>
+<span class="nc" id="L56">            operationCenterService.addSatelliteToConstellation(&quot;Орбита-1&quot;, commSat1);</span>
+<span class="nc" id="L57">            operationCenterService.addSatelliteToConstellation(&quot;Орбита-1&quot;, imagingSat1);</span>
+<span class="nc" id="L58">            operationCenterService.addSatelliteToConstellation(&quot;Орбита-1&quot;, imagingSat2);</span>
+<span class="nc" id="L59">            operationCenterService.addSatelliteToConstellation(&quot;Орбита-2&quot;, commSat2);</span>
+<span class="nc" id="L60">            operationCenterService.addSatelliteToConstellation(&quot;Орбита-2&quot;, imagingSat3);</span>
 
-<span class="nc" id="L57">            operationCenterService.activateAllSatellites(&quot;Орбита-1&quot;);</span>
-<span class="nc" id="L58">            operationCenterService.executeConstellationMission(&quot;Орбита-1&quot;);</span>
-<span class="nc" id="L59">            operationCenterService.showConstellationStatus(&quot;Орбита-1&quot;);</span>
+<span class="nc" id="L62">            System.out.println(&quot;-----------------------------------&quot;);</span>
 
-<span class="nc" id="L61">            System.out.println(constellationRepository.getAllConstellations());</span>
+<span class="nc" id="L64">            operationCenterService.activateAllSatellites(&quot;Орбита-1&quot;);</span>
+<span class="nc" id="L65">            operationCenterService.executeConstellationMission(&quot;Орбита-1&quot;);</span>
+<span class="nc" id="L66">            operationCenterService.showConstellationStatus(&quot;Орбита-1&quot;);</span>
+
+<span class="nc" id="L68">            System.out.println(constellationRepository.getAllConstellations());</span>
 
         } finally {
-<span class="nc" id="L64">            context.close();</span>
+<span class="nc" id="L71">            context.close();</span>
         }
-<span class="nc" id="L66">    }</span>
+<span class="nc" id="L73">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

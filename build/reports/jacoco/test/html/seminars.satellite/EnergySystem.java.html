@@ -8,16 +8,38 @@ import lombok.ToString;
 public class EnergySystem {
     private double batteryLevel;
 
-<span class="fc" id="L11">    public EnergySystem(double initialLevel) {</span>
-<span class="fc" id="L12">        this.batteryLevel = initialLevel;</span>
-<span class="fc" id="L13">    }</span>
+    // Скрытый конструктор, доступный только Строителю
+<span class="fc" id="L12">    private EnergySystem(Builder builder) {</span>
+<span class="fc" id="L13">        this.batteryLevel = builder.batteryLevel;</span>
+<span class="fc" id="L14">    }</span>
 
     public boolean consumeEnergy(double amount) {
-<span class="pc bpc" id="L16" title="1 of 2 branches missed.">        if (batteryLevel &gt;= amount) {</span>
-<span class="fc" id="L17">            batteryLevel -= amount;</span>
-<span class="fc" id="L18">            return true;</span>
+<span class="pc bpc" id="L17" title="1 of 2 branches missed.">        if (batteryLevel &gt;= amount) {</span>
+<span class="fc" id="L18">            batteryLevel -= amount;</span>
+<span class="fc" id="L19">            return true;</span>
         }
-<span class="nc" id="L20">        return false;</span>
+<span class="nc" id="L21">        return false;</span>
+    }
+
+    public static Builder builder() {
+<span class="fc" id="L25">        return new Builder();</span>
+    }
+
+    // Вложенный класс Строителя
+<span class="fc" id="L29">    public static class Builder {</span>
+<span class="fc" id="L30">        private double batteryLevel = 100.0; // Дефолтное значение уровня энергии</span>
+
+        public Builder batteryLevel(double batteryLevel) {
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">            if (batteryLevel &lt; 0) {</span>
+<span class="nc" id="L34">                throw new IllegalArgumentException(&quot;Уровень энергии не может быть отрицательным&quot;);</span>
+            }
+<span class="fc" id="L36">            this.batteryLevel = batteryLevel;</span>
+<span class="fc" id="L37">            return this;</span>
+        }
+
+        public EnergySystem build() {
+<span class="fc" id="L41">            return new EnergySystem(this);</span>
+        }
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

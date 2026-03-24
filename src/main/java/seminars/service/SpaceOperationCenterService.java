@@ -14,7 +14,8 @@ public class SpaceOperationCenterService {
     private final ConstellationRepository constellationRepository;
 
     public SatelliteConstellation createAndSaveConstellation(String name) {
-        SatelliteConstellation constellation = new SatelliteConstellation(name);
+        // Изменение: используем Builder вместо конструктора
+        SatelliteConstellation constellation = SatelliteConstellation.builder(name).build();
         constellationRepository.save(constellation);
         log.info("Создана спутниковая группировка: {}", name);
         return constellation;

@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.024s</div>
+<div class="counter">0.025s</div>
 <p>duration</p>
 </div>
 </td>
@@ -87,19 +87,19 @@
 <tr>
 <td class="success">Полный цикл: создание группировки -&gt; сохранение -&gt; поиск -&gt; проверка</td>
 <td class="success">fullLifecycle_createSaveFindVerify_shouldWorkCorrectly()</td>
-<td class="success">0.007s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Полный цикл с добавлением спутников в группировку</td>
 <td class="success">fullLifecycle_withSatellites_shouldPreserveData()</td>
-<td class="success">0.004s</td>
+<td class="success">0.007s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getAllConstellations должен возвращать все сохранённые группировки</td>
 <td class="success">getAllConstellations_shouldReturnAllSaved()</td>
-<td class="success">0.006s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -107,21 +107,21 @@
 <div class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2026-02-21T08:50:31.243+03:00  INFO 28380 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests]: RepositoryIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-02-21T08:50:31.246+03:00  INFO 28380 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration seminars.Main for test class seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests
-2026-02-21T08:50:31.249+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-02-21T08:50:31.249+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
-2026-02-21T08:50:31.260+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-02-21T08:50:31.260+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
-2026-02-21T08:50:31.270+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-02-21T08:50:31.271+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
-2026-02-21T08:50:31.271+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-2
-2026-02-21T08:50:31.271+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
-2026-02-21T08:50:31.271+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Удалена группировка: Орбита-Интеграция-1
-2026-02-21T08:50:31.271+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-02-21T08:50:31.277+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-02-21T08:50:31.277+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
-2026-02-21T08:50:31.280+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-2
+<pre>2026-03-24T15:27:52.677+03:00  INFO 9488 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests]: RepositoryIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-24T15:27:52.680+03:00  INFO 9488 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration seminars.Main for test class seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests
+2026-03-24T15:27:52.689+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T15:27:52.690+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T15:27:52.697+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T15:27:52.698+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T15:27:52.706+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T15:27:52.707+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T15:27:52.708+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-2
+2026-03-24T15:27:52.708+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T15:27:52.708+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Удалена группировка: Орбита-Интеграция-1
+2026-03-24T15:27:52.709+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T15:27:52.717+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T15:27:52.718+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-03-24T15:27:52.718+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-2
 </pre>
 </span>
 </div>
@@ -133,7 +133,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.0.0</a> at 21 февр. 2026 г., 08:50:33</p>
+<a href="https://www.gradle.org">Gradle 9.0.0</a> at 24 мар. 2026 г., 15:27:55</p>
 </div>
 </div>
 </body>

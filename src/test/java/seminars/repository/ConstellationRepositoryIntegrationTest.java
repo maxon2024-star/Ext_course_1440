@@ -47,7 +47,7 @@ class ConstellationRepositoryIntegrationTest {
         @DisplayName("Полный цикл: создание группировки -> сохранение -> поиск -> проверка")
         void fullLifecycle_createSaveFindVerify_shouldWorkCorrectly() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
 
             // Act - Create & Save
             repository.save(constellation);
@@ -66,7 +66,7 @@ class ConstellationRepositoryIntegrationTest {
         @DisplayName("Полный цикл с добавлением спутников в группировку")
         void fullLifecycle_withSatellites_shouldPreserveData() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             CommunicationSatellite satellite1 = new CommunicationSatellite(SATELLITE_NAME_1, ENERGY_LEVEL_1, BANDWIDTH);
             ImagingSatellite satellite2 = new ImagingSatellite(SATELLITE_NAME_2, ENERGY_LEVEL_2, RESOLUTION);
 
@@ -87,8 +87,8 @@ class ConstellationRepositoryIntegrationTest {
         @DisplayName("Полный цикл CRUD операций через репозиторий")
         void fullCrudCycle_shouldWorkCorrectly() {
             // Create
-            SatelliteConstellation constellation1 = new SatelliteConstellation(CONSTELLATION_NAME_1);
-            SatelliteConstellation constellation2 = new SatelliteConstellation(CONSTELLATION_NAME_2);
+            SatelliteConstellation constellation1 = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
+            SatelliteConstellation constellation2 = SatelliteConstellation.builder(CONSTELLATION_NAME_2).build();
             repository.save(constellation1);
             repository.save(constellation2);
 
@@ -98,7 +98,7 @@ class ConstellationRepositoryIntegrationTest {
             assertTrue(repository.existsByName(CONSTELLATION_NAME_2));
 
             // Update (save with same name)
-            SatelliteConstellation updated = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation updated = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             updated.addSatellite(new CommunicationSatellite(SATELLITE_NAME_1, ENERGY_LEVEL_1, BANDWIDTH));
             repository.save(updated);
 
@@ -121,8 +121,8 @@ class ConstellationRepositoryIntegrationTest {
         @DisplayName("getAllConstellations должен возвращать все сохранённые группировки")
         void getAllConstellations_shouldReturnAllSaved() {
             // Arrange
-            repository.save(new SatelliteConstellation(CONSTELLATION_NAME_1));
-            repository.save(new SatelliteConstellation(CONSTELLATION_NAME_2));
+            repository.save(SatelliteConstellation.builder(CONSTELLATION_NAME_1).build());
+            repository.save(SatelliteConstellation.builder(CONSTELLATION_NAME_2).build());
 
             // Act
             Map<String, SatelliteConstellation> all = repository.getAllConstellations();
@@ -279,7 +279,7 @@ class ConstellationRepositoryIntegrationTest {
         @DisplayName("Данные между тестами должны быть изолированы")
         void dataBetweenTests_shouldBeIsolated() {
             // Arrange
-            repository.save(new SatelliteConstellation(CONSTELLATION_NAME_1));
+            repository.save(SatelliteConstellation.builder(CONSTELLATION_NAME_1).build());
 
             // Assert
             assertEquals(1, repository.count());

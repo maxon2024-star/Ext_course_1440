@@ -48,7 +48,7 @@ class SpaceOperationCenterServiceMockTest {
     @DisplayName("addSatelliteToConstellation с существующей группировкой должен добавлять спутник")
     void addSatelliteToConstellation_existingConstellation_shouldAddSatellite() {
         // Arrange
-        SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME);
+        SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME).build();
         CommunicationSatellite satellite = new CommunicationSatellite(SATELLITE_NAME, ENERGY_LEVEL, BANDWIDTH);
         when(repositoryMock.findByName(CONSTELLATION_NAME)).thenReturn(Optional.of(constellation));
 
@@ -76,7 +76,7 @@ class SpaceOperationCenterServiceMockTest {
     @DisplayName("activateAllSatellites должен активировать все спутники в группировке")
     void activateAllSatellites_shouldActivateAllSatellites() {
         // Arrange
-        SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME);
+        SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME).build();
         CommunicationSatellite satellite = new CommunicationSatellite(SATELLITE_NAME, ENERGY_LEVEL, BANDWIDTH);
         constellation.addSatellite(satellite);
         when(repositoryMock.findByName(CONSTELLATION_NAME)).thenReturn(Optional.of(constellation));
@@ -93,7 +93,7 @@ class SpaceOperationCenterServiceMockTest {
     @DisplayName("executeConstellationMission должен выполнять миссии всех спутников")
     void executeConstellationMission_shouldExecuteAllMissions() {
         // Arrange
-        SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME);
+        SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME).build();
         CommunicationSatellite satellite = new CommunicationSatellite(SATELLITE_NAME, ENERGY_LEVEL, BANDWIDTH);
         satellite.activate();
         constellation.addSatellite(satellite);

@@ -46,7 +46,7 @@ class ConstellationRepositoryMockTest {
         @DisplayName("Мок save() должен вызываться с корректной группировкой")
         void save_shouldCallWithCorrectConstellation() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             doNothing().when(repositoryMock).save(any(SatelliteConstellation.class));
 
             // Act
@@ -61,7 +61,7 @@ class ConstellationRepositoryMockTest {
         @DisplayName("Мок save() должен вызываться ровно один раз")
         void save_shouldBeCalledExactlyOnce() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             doNothing().when(repositoryMock).save(any(SatelliteConstellation.class));
 
             // Act
@@ -75,8 +75,8 @@ class ConstellationRepositoryMockTest {
         @DisplayName("Мок save() при нескольких вызовах должен фиксировать все вызовы")
         void save_multipleCalls_shouldRecordAllCalls() {
             // Arrange
-            SatelliteConstellation constellation1 = new SatelliteConstellation(CONSTELLATION_NAME_1);
-            SatelliteConstellation constellation2 = new SatelliteConstellation(CONSTELLATION_NAME_2);
+            SatelliteConstellation constellation1 = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
+            SatelliteConstellation constellation2 = SatelliteConstellation.builder(CONSTELLATION_NAME_2).build();
             doNothing().when(repositoryMock).save(any(SatelliteConstellation.class));
 
             // Act
@@ -96,7 +96,7 @@ class ConstellationRepositoryMockTest {
         @DisplayName("Мок findByName() для существующей группировки должен возвращать Optional с значением")
         void findByName_existingConstellation_shouldReturnPresentOptional() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             when(repositoryMock.findByName(CONSTELLATION_NAME_1)).thenReturn(Optional.of(constellation));
 
             // Act
@@ -126,7 +126,7 @@ class ConstellationRepositoryMockTest {
         @DisplayName("Мок findByName() должен возвращать настроенное значение")
         void findByName_shouldReturnConfiguredValue() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             CommunicationSatellite satellite = new CommunicationSatellite(SATELLITE_NAME_1, ENERGY_LEVEL_1, BANDWIDTH);
             constellation.addSatellite(satellite);
             when(repositoryMock.findByName(CONSTELLATION_NAME_1)).thenReturn(Optional.of(constellation));
@@ -149,8 +149,8 @@ class ConstellationRepositoryMockTest {
         void getAllConstellations_shouldReturnConfiguredMap() {
             // Arrange
             Map<String, SatelliteConstellation> mockMap = new HashMap<>();
-            mockMap.put(CONSTELLATION_NAME_1, new SatelliteConstellation(CONSTELLATION_NAME_1));
-            mockMap.put(CONSTELLATION_NAME_2, new SatelliteConstellation(CONSTELLATION_NAME_2));
+            mockMap.put(CONSTELLATION_NAME_1, SatelliteConstellation.builder(CONSTELLATION_NAME_1).build());
+            mockMap.put(CONSTELLATION_NAME_2, SatelliteConstellation.builder(CONSTELLATION_NAME_2).build());
             when(repositoryMock.getAllConstellations()).thenReturn(mockMap);
 
             // Act
@@ -305,7 +305,7 @@ class ConstellationRepositoryMockTest {
         @DisplayName("Последовательность save -> findByName должна работать корректно")
         void saveThenFindByName_shouldWorkCorrectly() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             doNothing().when(repositoryMock).save(any(SatelliteConstellation.class));
             when(repositoryMock.findByName(CONSTELLATION_NAME_1)).thenReturn(Optional.of(constellation));
             when(repositoryMock.existsByName(CONSTELLATION_NAME_1)).thenReturn(true);
@@ -327,7 +327,7 @@ class ConstellationRepositoryMockTest {
         @DisplayName("Полный цикл CRUD операций с моками")
         void fullCrudCycle_withMocks_shouldWorkCorrectly() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             Map<String, SatelliteConstellation> mockMap = new HashMap<>();
             mockMap.put(CONSTELLATION_NAME_1, constellation);
 

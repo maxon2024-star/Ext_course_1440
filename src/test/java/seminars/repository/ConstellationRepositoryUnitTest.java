@@ -40,7 +40,7 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Сохранение новой группировки должно успешно добавлять её в репозиторий")
         void save_newConstellation_shouldAddToRepository() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
 
             // Act
             repository.save(constellation);
@@ -54,8 +54,8 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Сохранение группировки с тем же именем должно обновлять существующую")
         void save_existingConstellationName_shouldUpdateExisting() {
             // Arrange
-            SatelliteConstellation constellation1 = new SatelliteConstellation(CONSTELLATION_NAME_1);
-            SatelliteConstellation constellation2 = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation1 = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
+            SatelliteConstellation constellation2 = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             ImagingSatellite satellite = new ImagingSatellite(SATELLITE_NAME_1, ENERGY_LEVEL_1, RESOLUTION);
             constellation2.addSatellite(satellite);
 
@@ -73,8 +73,8 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Сохранение нескольких группировок должно увеличивать счётчик")
         void save_multipleConstellations_shouldIncreaseCount() {
             // Arrange
-            SatelliteConstellation constellation1 = new SatelliteConstellation(CONSTELLATION_NAME_1);
-            SatelliteConstellation constellation2 = new SatelliteConstellation(CONSTELLATION_NAME_2);
+            SatelliteConstellation constellation1 = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
+            SatelliteConstellation constellation2 = SatelliteConstellation.builder(CONSTELLATION_NAME_2).build();
 
             // Act
             repository.save(constellation1);
@@ -95,7 +95,7 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Поиск существующей группировки должен возвращать Optional с значением")
         void findByName_existingConstellation_shouldReturnPresentOptional() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             repository.save(constellation);
 
             // Act
@@ -146,7 +146,7 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Получение всех группировок должно возвращать копию данных")
         void getAllConstellations_withData_shouldReturnCopy() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             repository.save(constellation);
 
             // Act
@@ -165,8 +165,8 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Получение всех группировок должно возвращать все сохранённые группировки")
         void getAllConstellations_multipleConstellations_shouldReturnAll() {
             // Arrange
-            SatelliteConstellation constellation1 = new SatelliteConstellation(CONSTELLATION_NAME_1);
-            SatelliteConstellation constellation2 = new SatelliteConstellation(CONSTELLATION_NAME_2);
+            SatelliteConstellation constellation1 = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
+            SatelliteConstellation constellation2 = SatelliteConstellation.builder(CONSTELLATION_NAME_2).build();
             repository.save(constellation1);
             repository.save(constellation2);
 
@@ -188,7 +188,7 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Проверка существования сохранённой группировки должна возвращать true")
         void existsByName_savedConstellation_shouldReturnTrue() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             repository.save(constellation);
 
             // Act
@@ -212,7 +212,7 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Проверка существования после удаления должна возвращать false")
         void existsByName_afterDelete_shouldReturnFalse() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             repository.save(constellation);
             repository.deleteByName(CONSTELLATION_NAME_1);
 
@@ -232,7 +232,7 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Удаление существующей группировки должно уменьшать счётчик")
         void deleteByName_existingConstellation_shouldDecreaseCount() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             repository.save(constellation);
 
             // Act
@@ -269,9 +269,9 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Счётчик должен соответствовать количеству сохранённых группировок")
         void count_withMultipleConstellations_shouldReturnCorrectCount() {
             // Arrange
-            repository.save(new SatelliteConstellation(CONSTELLATION_NAME_1));
-            repository.save(new SatelliteConstellation(CONSTELLATION_NAME_2));
-            repository.save(new SatelliteConstellation("Орбита-3"));
+            repository.save(SatelliteConstellation.builder(CONSTELLATION_NAME_1).build());
+            repository.save(SatelliteConstellation.builder(CONSTELLATION_NAME_2).build());
+            repository.save(SatelliteConstellation.builder("Орбита-3").build());
 
             // Act
             int count = repository.count();
@@ -289,8 +289,8 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Очистка репозитория должна удалять все группировки")
         void clear_withData_shouldRemoveAllConstellations() {
             // Arrange
-            repository.save(new SatelliteConstellation(CONSTELLATION_NAME_1));
-            repository.save(new SatelliteConstellation(CONSTELLATION_NAME_2));
+            repository.save(SatelliteConstellation.builder(CONSTELLATION_NAME_1).build());
+            repository.save(SatelliteConstellation.builder(CONSTELLATION_NAME_2).build());
 
             // Act
             repository.clear();
@@ -316,7 +316,7 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Сохранение группировки с пустым именем должно работать")
         void save_emptyNameConstellation_shouldWork() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation("");
+            SatelliteConstellation constellation = SatelliteConstellation.builder("").build();
 
             // Act & Assert
             assertDoesNotThrow(() -> repository.save(constellation));
@@ -328,7 +328,7 @@ class ConstellationRepositoryUnitTest {
         void save_longNameConstellation_shouldWork() {
             // Arrange
             String longName = "О".repeat(1000);
-            SatelliteConstellation constellation = new SatelliteConstellation(longName);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(longName).build();
 
             // Act & Assert
             assertDoesNotThrow(() -> repository.save(constellation));
@@ -339,7 +339,7 @@ class ConstellationRepositoryUnitTest {
         @DisplayName("Добавление спутников в группировку перед сохранением должно сохраняться")
         void save_constellationWithSatellites_shouldPreserveSatellites() {
             // Arrange
-            SatelliteConstellation constellation = new SatelliteConstellation(CONSTELLATION_NAME_1);
+            SatelliteConstellation constellation = SatelliteConstellation.builder(CONSTELLATION_NAME_1).build();
             CommunicationSatellite satellite1 = new CommunicationSatellite(SATELLITE_NAME_1, ENERGY_LEVEL_1, BANDWIDTH);
             ImagingSatellite satellite2 = new ImagingSatellite(SATELLITE_NAME_2, ENERGY_LEVEL_2, RESOLUTION);
             constellation.addSatellite(satellite1);

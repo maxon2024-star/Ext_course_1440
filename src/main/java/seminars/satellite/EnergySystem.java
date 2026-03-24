@@ -8,8 +8,9 @@ import lombok.ToString;
 public class EnergySystem {
     private double batteryLevel;
 
-    public EnergySystem(double initialLevel) {
-        this.batteryLevel = initialLevel;
+    // Скрытый конструктор, доступный только Строителю
+    private EnergySystem(Builder builder) {
+        this.batteryLevel = builder.batteryLevel;
     }
 
     public boolean consumeEnergy(double amount) {
@@ -18,5 +19,26 @@ public class EnergySystem {
             return true;
         }
         return false;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    // Вложенный класс Строителя
+    public static class Builder {
+        private double batteryLevel = 100.0; // Дефолтное значение уровня энергии
+
+        public Builder batteryLevel(double batteryLevel) {
+            if (batteryLevel < 0) {
+                throw new IllegalArgumentException("Уровень энергии не может быть отрицательным");
+            }
+            this.batteryLevel = batteryLevel;
+            return this;
+        }
+
+        public EnergySystem build() {
+            return new EnergySystem(this);
+        }
     }
 }

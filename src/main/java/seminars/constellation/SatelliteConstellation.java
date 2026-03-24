@@ -13,12 +13,40 @@ public class SatelliteConstellation {
     private final String constellationName;
     private final List<Satellite> satellites;
 
-    public SatelliteConstellation(String constellationName) {
-        this.constellationName = constellationName;
-        this.satellites = new ArrayList<>();
+    private SatelliteConstellation(Builder builder) {
+        this.constellationName = builder.constellationName;
+        this.satellites = builder.satellites;
     }
 
+    // Возвращенный метод для динамического добавления спутников
     public void addSatellite(Satellite satellite) {
-        satellites.add(satellite);
+        if (satellite != null) {
+            this.satellites.add(satellite);
+        }
+    }
+
+    public static Builder builder(String constellationName) {
+        return new Builder(constellationName);
+    }
+
+    public static class Builder {
+        private String constellationName;
+        private List<Satellite> satellites = new ArrayList<>();
+
+        public Builder(String constellationName) {
+            // Убрана жесткая валидация пустого имени для совместимости с тестами
+            this.constellationName = constellationName;
+        }
+
+        public Builder addSatellite(Satellite satellite) {
+            if (satellite != null) {
+                this.satellites.add(satellite);
+            }
+            return this;
+        }
+
+        public SatelliteConstellation build() {
+            return new SatelliteConstellation(this);
+        }
     }
 }

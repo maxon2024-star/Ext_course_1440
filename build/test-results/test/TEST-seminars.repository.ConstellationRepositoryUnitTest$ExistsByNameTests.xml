@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Тесты метода existsByName()" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-21T05:50:32.382Z" hostname="ZADEBAAV" time="0.022">
+<testsuite name="Тесты метода existsByName()" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-03-24T12:27:53.782Z" hostname="ZADEBAAV" time="0.025">
   <properties/>
-  <testcase name="Проверка существования сохранённой группировки должна возвращать true" classname="seminars.repository.ConstellationRepositoryUnitTest$ExistsByNameTests" time="0.004"/>
+  <testcase name="Проверка существования сохранённой группировки должна возвращать true" classname="seminars.repository.ConstellationRepositoryUnitTest$ExistsByNameTests" time="0.005"/>
   <testcase name="Проверка существования несуществующей группировки должна возвращать false" classname="seminars.repository.ConstellationRepositoryUnitTest$ExistsByNameTests" time="0.003"/>
-  <testcase name="Проверка существования после удаления должна возвращать false" classname="seminars.repository.ConstellationRepositoryUnitTest$ExistsByNameTests" time="0.005"/>
-  <system-out><![CDATA[2026-02-21T08:50:32.385+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
-2026-02-21T08:50:32.401+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
-2026-02-21T08:50:32.401+03:00  INFO 28380 --- [    Test worker] s.repository.ConstellationRepository     : Удалена группировка: Орбита-1
+  <testcase name="Проверка существования после удаления должна возвращать false" classname="seminars.repository.ConstellationRepositoryUnitTest$ExistsByNameTests" time="0.012"/>
+  <system-out><![CDATA[2026-03-24T15:27:53.786+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+2026-03-24T15:27:53.802+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+2026-03-24T15:27:53.803+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Удалена группировка: Орбита-1
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

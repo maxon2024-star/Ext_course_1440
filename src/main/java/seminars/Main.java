@@ -4,8 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import seminars.repository.ConstellationRepository;
-import seminars.satellite.CommunicationSatellite;
-import seminars.satellite.ImagingSatellite;
+import seminars.satellite.Satellite;
+import seminars.satellite.factory.CommunicationSatelliteFactory;
+import seminars.satellite.factory.ImagingSatelliteFactory;
+import seminars.satellite.factory.SatelliteFactory;
 import seminars.service.SpaceOperationCenterService;
 
 @SpringBootApplication
@@ -20,22 +22,27 @@ public class Main {
             ConstellationRepository constellationRepository = context.getBean(ConstellationRepository.class);
             SpaceOperationCenterService operationCenterService = context.getBean(SpaceOperationCenterService.class);
 
-            System.out.println("\nСОЗДАНИЕ СПЕЦИАЛИЗИРОВАННЫХ СПУТНИКОВ:");
+            // Инициализация фабрик
+            SatelliteFactory commFactory = new CommunicationSatelliteFactory();
+            SatelliteFactory imgFactory = new ImagingSatelliteFactory();
+
+            System.out.println("\nСОЗДАНИЕ СПЕЦИАЛИЗИРОВАННЫХ СПУТНИКОВ (ЧЕРЕЗ ФАБРИКУ):");
             System.out.println("---------------------------------------------");
 
-            CommunicationSatellite commSat1 = new CommunicationSatellite("Связь-1", 0.85, 500.0);
+            // Создаем спутники через фабричный метод, работая с абстракцией Satellite
+            Satellite commSat1 = commFactory.createSatellite("Связь-1", 0.85, 500.0);
             System.out.println("Создан спутник: " + commSat1.getName() + " (" + commSat1.getEnergy().getBatteryLevel() + ")");
 
-            CommunicationSatellite commSat2 = new CommunicationSatellite("Связь-2", 0.75, 1000.0);
+            Satellite commSat2 = commFactory.createSatellite("Связь-2", 0.75, 1000.0);
             System.out.println("Создан спутник: " + commSat2.getName() + " (" + commSat2.getEnergy().getBatteryLevel() + ")");
 
-            ImagingSatellite imagingSat1 = new ImagingSatellite("ДЗЗ-1", 0.92, 2.5);
+            Satellite imagingSat1 = imgFactory.createSatellite("ДЗЗ-1", 0.92, 2.5);
             System.out.println("Создан спутник: " + imagingSat1.getName() + " (" + imagingSat1.getEnergy().getBatteryLevel() + ")");
 
-            ImagingSatellite imagingSat2 = new ImagingSatellite("ДЗЗ-2", 0.45, 1.0);
+            Satellite imagingSat2 = imgFactory.createSatellite("ДЗЗ-2", 0.45, 1.0);
             System.out.println("Создан спутник: " + imagingSat2.getName() + " (" + imagingSat2.getEnergy().getBatteryLevel() + ")");
 
-            ImagingSatellite imagingSat3 = new ImagingSatellite("ДЗЗ-3", 0.15, 5.0);
+            Satellite imagingSat3 = imgFactory.createSatellite("ДЗЗ-3", 0.15, 5.0);
             System.out.println("Создан спутник: " + imagingSat3.getName() + " (" + imagingSat3.getEnergy().getBatteryLevel() + ")");
 
             System.out.println("---------------------------------------------");

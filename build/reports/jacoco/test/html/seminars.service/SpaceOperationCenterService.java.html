@@ -14,67 +14,68 @@ public class SpaceOperationCenterService {
     private final ConstellationRepository constellationRepository;
 
     public SatelliteConstellation createAndSaveConstellation(String name) {
-<span class="fc" id="L17">        SatelliteConstellation constellation = new SatelliteConstellation(name);</span>
-<span class="fc" id="L18">        constellationRepository.save(constellation);</span>
-<span class="fc" id="L19">        log.info(&quot;Создана спутниковая группировка: {}&quot;, name);</span>
-<span class="fc" id="L20">        return constellation;</span>
+        // Изменение: используем Builder вместо конструктора
+<span class="fc" id="L18">        SatelliteConstellation constellation = SatelliteConstellation.builder(name).build();</span>
+<span class="fc" id="L19">        constellationRepository.save(constellation);</span>
+<span class="fc" id="L20">        log.info(&quot;Создана спутниковая группировка: {}&quot;, name);</span>
+<span class="fc" id="L21">        return constellation;</span>
     }
 
     public void addSatelliteToConstellation(String constellationName, Satellite satellite) {
-<span class="fc" id="L24">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
+<span class="fc" id="L25">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
                 constellation -&gt; {
-<span class="fc" id="L26">                    constellation.addSatellite(satellite);</span>
-<span class="fc" id="L27">                    log.info(&quot;Добавлен спутник {} в группировку {}&quot;, satellite.getName(), constellationName);</span>
-<span class="fc" id="L28">                },</span>
-<span class="fc" id="L29">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
+<span class="fc" id="L27">                    constellation.addSatellite(satellite);</span>
+<span class="fc" id="L28">                    log.info(&quot;Добавлен спутник {} в группировку {}&quot;, satellite.getName(), constellationName);</span>
+<span class="fc" id="L29">                },</span>
+<span class="fc" id="L30">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
         );
-<span class="fc" id="L31">    }</span>
+<span class="fc" id="L32">    }</span>
 
     public void executeConstellationMission(String constellationName) {
-<span class="fc" id="L34">        log.info(&quot;=== ВЫПОЛНЕНИЕ МИССИЙ ДЛЯ ГРУППИРОВКИ: {} ===&quot;, constellationName);</span>
-<span class="fc" id="L35">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
+<span class="fc" id="L35">        log.info(&quot;=== ВЫПОЛНЕНИЕ МИССИЙ ДЛЯ ГРУППИРОВКИ: {} ===&quot;, constellationName);</span>
+<span class="fc" id="L36">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
                 constellation -&gt; {
-<span class="fc" id="L37">                    log.info(&quot;ВЫПОЛНЕНИЕ МИССИЙ ГРУППИРОВКИ {}&quot;, constellationName.toUpperCase());</span>
-<span class="fc" id="L38">                    log.info(&quot;==================================================&quot;);</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">                    for (Satellite satellite : constellation.getSatellites()) {</span>
-<span class="fc" id="L40">                        satellite.executeMission();</span>
-<span class="fc" id="L41">                    }</span>
-<span class="fc" id="L42">                },</span>
-<span class="fc" id="L43">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
+<span class="fc" id="L38">                    log.info(&quot;ВЫПОЛНЕНИЕ МИССИЙ ГРУППИРОВКИ {}&quot;, constellationName.toUpperCase());</span>
+<span class="fc" id="L39">                    log.info(&quot;==================================================&quot;);</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">                    for (Satellite satellite : constellation.getSatellites()) {</span>
+<span class="fc" id="L41">                        satellite.executeMission();</span>
+<span class="fc" id="L42">                    }</span>
+<span class="fc" id="L43">                },</span>
+<span class="fc" id="L44">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
         );
-<span class="fc" id="L45">    }</span>
+<span class="fc" id="L46">    }</span>
 
     public void activateAllSatellites(String constellationName) {
-<span class="fc" id="L48">        log.info(&quot;=== АКТИВАЦИЯ СПУТНИКОВ В ГРУППИРОВКЕ: {} ===&quot;, constellationName);</span>
-<span class="fc" id="L49">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
+<span class="fc" id="L49">        log.info(&quot;=== АКТИВАЦИЯ СПУТНИКОВ В ГРУППИРОВКЕ: {} ===&quot;, constellationName);</span>
+<span class="fc" id="L50">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
                 constellation -&gt; {
-<span class="fc bfc" id="L51" title="All 2 branches covered.">                    for (Satellite satellite : constellation.getSatellites()) {</span>
-<span class="fc" id="L52">                        satellite.activate();</span>
-<span class="fc" id="L53">                    }</span>
-<span class="fc" id="L54">                },</span>
-<span class="fc" id="L55">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">                    for (Satellite satellite : constellation.getSatellites()) {</span>
+<span class="fc" id="L53">                        satellite.activate();</span>
+<span class="fc" id="L54">                    }</span>
+<span class="fc" id="L55">                },</span>
+<span class="fc" id="L56">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
         );
-<span class="fc" id="L57">    }</span>
+<span class="fc" id="L58">    }</span>
 
     public void showConstellationStatus(String constellationName) {
-<span class="fc" id="L60">        log.info(&quot;=== СТАТУС ГРУППИРОВКИ: {} ===&quot;, constellationName);</span>
-<span class="fc" id="L61">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
+<span class="fc" id="L61">        log.info(&quot;=== СТАТУС ГРУППИРОВКИ: {} ===&quot;, constellationName);</span>
+<span class="fc" id="L62">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
                 constellation -&gt; {
-<span class="fc" id="L63">                    log.info(&quot;Количество спутников: {}&quot;, constellation.getSatellites().size());</span>
-<span class="fc bfc" id="L64" title="All 2 branches covered.">                    for (Satellite satellite : constellation.getSatellites()) {</span>
-<span class="fc" id="L65">                        log.info(&quot;{}&quot;, satellite.getState());</span>
-<span class="fc" id="L66">                    }</span>
-<span class="fc" id="L67">                },</span>
-<span class="fc" id="L68">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
+<span class="fc" id="L64">                    log.info(&quot;Количество спутников: {}&quot;, constellation.getSatellites().size());</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">                    for (Satellite satellite : constellation.getSatellites()) {</span>
+<span class="fc" id="L66">                        log.info(&quot;{}&quot;, satellite.getState());</span>
+<span class="fc" id="L67">                    }</span>
+<span class="fc" id="L68">                },</span>
+<span class="fc" id="L69">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
         );
-<span class="fc" id="L70">    }</span>
+<span class="fc" id="L71">    }</span>
 
     public boolean constellationExists(String constellationName) {
-<span class="fc" id="L73">        return constellationRepository.existsByName(constellationName);</span>
+<span class="fc" id="L74">        return constellationRepository.existsByName(constellationName);</span>
     }
 
     public int getConstellationCount() {
-<span class="fc" id="L77">        return constellationRepository.count();</span>
+<span class="fc" id="L78">        return constellationRepository.count();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
