@@ -8,6 +8,8 @@ import seminars.satellite.Satellite;
 import seminars.satellite.factory.CommunicationSatelliteFactory;
 import seminars.satellite.factory.ImagingSatelliteFactory;
 import seminars.satellite.factory.SatelliteFactory;
+import seminars.satellite.param.CommunicationSatelliteParam;
+import seminars.satellite.param.ImagingSatelliteParam;
 import seminars.service.SpaceOperationCenterService;
 
 @SpringBootApplication
@@ -29,20 +31,20 @@ public class Main {
             System.out.println("\nСОЗДАНИЕ СПЕЦИАЛИЗИРОВАННЫХ СПУТНИКОВ (ЧЕРЕЗ ФАБРИКУ):");
             System.out.println("---------------------------------------------");
 
-            // Создаем спутники через фабричный метод, работая с абстракцией Satellite
-            Satellite commSat1 = commFactory.createSatellite("Связь-1", 0.85, 500.0);
+            // Создаем спутники через фабричный метод, работая с абстракцией Satellite и используя классы параметров
+            Satellite commSat1 = commFactory.createSatelliteWithParameter(new CommunicationSatelliteParam("Связь-1", 0.85, 500.0));
             System.out.println("Создан спутник: " + commSat1.getName() + " (" + commSat1.getEnergy().getBatteryLevel() + ")");
 
-            Satellite commSat2 = commFactory.createSatellite("Связь-2", 0.75, 1000.0);
+            Satellite commSat2 = commFactory.createSatelliteWithParameter(new CommunicationSatelliteParam("Связь-2", 0.75, 1000.0));
             System.out.println("Создан спутник: " + commSat2.getName() + " (" + commSat2.getEnergy().getBatteryLevel() + ")");
 
-            Satellite imagingSat1 = imgFactory.createSatellite("ДЗЗ-1", 0.92, 2.5);
+            Satellite imagingSat1 = imgFactory.createSatelliteWithParameter(new ImagingSatelliteParam("ДЗЗ-1", 0.92, 2.5));
             System.out.println("Создан спутник: " + imagingSat1.getName() + " (" + imagingSat1.getEnergy().getBatteryLevel() + ")");
 
-            Satellite imagingSat2 = imgFactory.createSatellite("ДЗЗ-2", 0.45, 1.0);
+            Satellite imagingSat2 = imgFactory.createSatelliteWithParameter(new ImagingSatelliteParam("ДЗЗ-2", 0.45, 1.0));
             System.out.println("Создан спутник: " + imagingSat2.getName() + " (" + imagingSat2.getEnergy().getBatteryLevel() + ")");
 
-            Satellite imagingSat3 = imgFactory.createSatellite("ДЗЗ-3", 0.15, 5.0);
+            Satellite imagingSat3 = imgFactory.createSatelliteWithParameter(new ImagingSatelliteParam("ДЗЗ-3", 0.15, 5.0));
             System.out.println("Создан спутник: " + imagingSat3.getName() + " (" + imagingSat3.getEnergy().getBatteryLevel() + ")");
 
             System.out.println("---------------------------------------------");

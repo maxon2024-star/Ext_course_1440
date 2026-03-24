@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Тесты метода getAllConstellations()" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-03-24T12:27:53.821Z" hostname="ZADEBAAV" time="0.033">
+<testsuite name="Тесты метода getAllConstellations()" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:13:23.180Z" hostname="ZADEBAAV" time="0.005">
   <properties/>
-  <testcase name="Получение всех группировок должно возвращать все сохранённые группировки" classname="seminars.repository.ConstellationRepositoryUnitTest$GetAllConstellationsTests" time="0.017"/>
-  <testcase name="Получение всех группировок из пустого репозитория должно возвращать пустую карту" classname="seminars.repository.ConstellationRepositoryUnitTest$GetAllConstellationsTests" time="0.005"/>
-  <testcase name="Получение всех группировок должно возвращать копию данных" classname="seminars.repository.ConstellationRepositoryUnitTest$GetAllConstellationsTests" time="0.003"/>
-  <system-out><![CDATA[2026-03-24T15:27:53.833+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
-2026-03-24T15:27:53.834+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-2
-2026-03-24T15:27:53.852+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+  <testcase name="Получение всех группировок должно возвращать все сохранённые группировки" classname="seminars.repository.ConstellationRepositoryUnitTest$GetAllConstellationsTests" time="0.002"/>
+  <testcase name="Получение всех группировок из пустого репозитория должно возвращать пустую карту" classname="seminars.repository.ConstellationRepositoryUnitTest$GetAllConstellationsTests" time="0.001"/>
+  <testcase name="Получение всех группировок должно возвращать копию данных" classname="seminars.repository.ConstellationRepositoryUnitTest$GetAllConstellationsTests" time="0.001"/>
+  <system-out><![CDATA[2026-03-24T20:13:23.183+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+2026-03-24T20:13:23.183+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-2
+2026-03-24T20:13:23.183+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

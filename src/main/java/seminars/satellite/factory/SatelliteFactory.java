@@ -1,8 +1,10 @@
 package seminars.satellite.factory;
 
 import seminars.satellite.Satellite;
+import seminars.satellite.SatelliteType;
+import seminars.satellite.param.SatelliteParam;
 
 public interface SatelliteFactory {
-    // specificParam: в зависимости от реализации это будет либо bandwidth, либо resolution
-    Satellite createSatellite(String name, double initialEnergy, double specificParam);
+    Satellite createSatelliteWithParameter(SatelliteParam param);
+    boolean isSatelliteTypeSupported(SatelliteType type);
 }

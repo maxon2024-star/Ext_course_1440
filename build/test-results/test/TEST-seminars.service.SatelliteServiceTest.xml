@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seminars.service.SatelliteServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:13:23.251Z" hostname="ZADEBAAV" time="0.011">
+  <properties/>
+  <testcase name="testCreateCommunicationSatelliteThroughService()" classname="seminars.service.SatelliteServiceTest" time="0.006"/>
+  <testcase name="testCreateImagingSatelliteThroughService()" classname="seminars.service.SatelliteServiceTest" time="0.004"/>
+  <system-out><![CDATA[2026-03-24T20:13:23.224+03:00  INFO 24520 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [seminars.service.SatelliteServiceTest]: SatelliteServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-24T20:13:23.248+03:00  INFO 24520 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration seminars.Main for test class seminars.service.SatelliteServiceTest
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

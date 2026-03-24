@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SpaceOperationCenterService - Интеграционные тесты" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-03-24T12:27:53.940Z" hostname="ZADEBAAV" time="0.028">
+<testsuite name="SpaceOperationCenterService - Интеграционные тесты" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:13:23.276Z" hostname="ZADEBAAV" time="0.016">
   <properties/>
-  <testcase name="getConstellationCount должен возвращать актуальное количество" classname="seminars.service.SpaceOperationCenterServiceIntegrationTest" time="0.009"/>
-  <testcase name="constellationExists должен проверять существование в репозитории" classname="seminars.service.SpaceOperationCenterServiceIntegrationTest" time="0.008"/>
-  <testcase name="Создание группировки через сервис должно сохранять в репозиторий" classname="seminars.service.SpaceOperationCenterServiceIntegrationTest" time="0.007"/>
-  <system-out><![CDATA[2026-03-24T15:27:53.890+03:00  INFO 9488 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [seminars.service.SpaceOperationCenterServiceIntegrationTest]: SpaceOperationCenterServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-03-24T15:27:53.929+03:00  INFO 9488 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration seminars.Main for test class seminars.service.SpaceOperationCenterServiceIntegrationTest
-2026-03-24T15:27:53.943+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-03-24T15:27:53.945+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Сервис-Тест
-2026-03-24T15:27:53.945+03:00  INFO 9488 --- [    Test worker] s.service.SpaceOperationCenterService    : Создана спутниковая группировка: Орбита-Сервис-Тест
-2026-03-24T15:27:53.945+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-2
-2026-03-24T15:27:53.945+03:00  INFO 9488 --- [    Test worker] s.service.SpaceOperationCenterService    : Создана спутниковая группировка: Орбита-2
-2026-03-24T15:27:53.954+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-03-24T15:27:53.956+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Сервис-Тест
-2026-03-24T15:27:53.956+03:00  INFO 9488 --- [    Test worker] s.service.SpaceOperationCenterService    : Создана спутниковая группировка: Орбита-Сервис-Тест
-2026-03-24T15:27:53.963+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-03-24T15:27:53.964+03:00  INFO 9488 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Сервис-Тест
-2026-03-24T15:27:53.965+03:00  INFO 9488 --- [    Test worker] s.service.SpaceOperationCenterService    : Создана спутниковая группировка: Орбита-Сервис-Тест
+  <testcase name="getConstellationCount должен возвращать актуальное количество" classname="seminars.service.SpaceOperationCenterServiceIntegrationTest" time="0.004"/>
+  <testcase name="constellationExists должен проверять существование в репозитории" classname="seminars.service.SpaceOperationCenterServiceIntegrationTest" time="0.005"/>
+  <testcase name="Создание группировки через сервис должно сохранять в репозиторий" classname="seminars.service.SpaceOperationCenterServiceIntegrationTest" time="0.005"/>
+  <system-out><![CDATA[2026-03-24T20:13:23.264+03:00  INFO 24520 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [seminars.service.SpaceOperationCenterServiceIntegrationTest]: SpaceOperationCenterServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-24T20:13:23.272+03:00  INFO 24520 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration seminars.Main for test class seminars.service.SpaceOperationCenterServiceIntegrationTest
+2026-03-24T20:13:23.281+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:13:23.281+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Сервис-Тест
+2026-03-24T20:13:23.281+03:00  INFO 24520 --- [    Test worker] s.service.SpaceOperationCenterService    : Создана спутниковая группировка: Орбита-Сервис-Тест
+2026-03-24T20:13:23.281+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-2
+2026-03-24T20:13:23.281+03:00  INFO 24520 --- [    Test worker] s.service.SpaceOperationCenterService    : Создана спутниковая группировка: Орбита-2
+2026-03-24T20:13:23.281+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:13:23.281+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Сервис-Тест
+2026-03-24T20:13:23.281+03:00  INFO 24520 --- [    Test worker] s.service.SpaceOperationCenterService    : Создана спутниковая группировка: Орбита-Сервис-Тест
+2026-03-24T20:13:23.289+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:13:23.289+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Сервис-Тест
+2026-03-24T20:13:23.289+03:00  INFO 24520 --- [    Test worker] s.service.SpaceOperationCenterService    : Создана спутниковая группировка: Орбита-Сервис-Тест
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
