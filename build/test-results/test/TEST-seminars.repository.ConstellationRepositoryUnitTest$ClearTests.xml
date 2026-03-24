@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Тесты метода clear()" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:13:23.151Z" hostname="ZADEBAAV" time="0.004">
+  <properties/>
+  <testcase name="Очистка репозитория должна удалять все группировки" classname="seminars.repository.ConstellationRepositoryUnitTest$ClearTests" time="0.001"/>
+  <testcase name="Очистка пустого репозитория не должна вызывать ошибок" classname="seminars.repository.ConstellationRepositoryUnitTest$ClearTests" time="0.002"/>
+  <system-out><![CDATA[2026-03-24T20:13:23.150+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+2026-03-24T20:13:23.150+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-2
+2026-03-24T20:13:23.150+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-03-24T20:13:23.158+03:00  INFO 24520 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
