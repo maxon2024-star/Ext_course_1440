@@ -1,0 +1,10 @@
+server:
+  port: 7070
+
+spring:
+  application:
+    name: space-operation-center
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

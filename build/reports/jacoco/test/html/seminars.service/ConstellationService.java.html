@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConstellationService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ext_course_1440</a> &gt; <a href="index.source.html" class="el_package">seminars.service</a> &gt; <span class="el_source">ConstellationService.java</span></div><h1>ConstellationService.java</h1><pre class="source lang-java linenums">package seminars.service;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import seminars.repository.ConstellationRepository;
+import seminars.satellite.Satellite;
+import seminars.constellation.SatelliteConstellation;
+
+<span class="fc" id="L10">@Slf4j</span>
+@Service
+@RequiredArgsConstructor
+public class ConstellationService {
+    private final ConstellationRepository constellationRepository;
+
+    public SatelliteConstellation createAndSaveConstellation(String name) {
+        // Изменение: используем Builder вместо конструктора
+<span class="fc" id="L18">        SatelliteConstellation constellation = SatelliteConstellation.builder(name).build();</span>
+<span class="fc" id="L19">        constellationRepository.save(constellation);</span>
+<span class="fc" id="L20">        log.info(&quot;Создана спутниковая группировка: {}&quot;, name);</span>
+<span class="fc" id="L21">        return constellation;</span>
+    }
+
+    public void addSatelliteToConstellation(String constellationName, Satellite satellite) {
+<span class="fc" id="L25">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
+                constellation -&gt; {
+<span class="fc" id="L27">                    constellation.addSatellite(satellite);</span>
+<span class="fc" id="L28">                    log.info(&quot;Добавлен спутник {} в группировку {}&quot;, satellite.getName(), constellationName);</span>
+<span class="fc" id="L29">                },</span>
+<span class="fc" id="L30">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
+        );
+<span class="fc" id="L32">    }</span>
+
+    public void executeConstellationMission(String constellationName) {
+<span class="fc" id="L35">        log.info(&quot;=== ВЫПОЛНЕНИЕ МИССИЙ ДЛЯ ГРУППИРОВКИ: {} ===&quot;, constellationName);</span>
+<span class="fc" id="L36">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
+                constellation -&gt; {
+<span class="fc" id="L38">                    log.info(&quot;ВЫПОЛНЕНИЕ МИССИЙ ГРУППИРОВКИ {}&quot;, constellationName.toUpperCase());</span>
+<span class="fc" id="L39">                    log.info(&quot;==================================================&quot;);</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">                    for (Satellite satellite : constellation.getSatellites()) {</span>
+<span class="fc" id="L41">                        satellite.executeMission();</span>
+<span class="fc" id="L42">                    }</span>
+<span class="fc" id="L43">                },</span>
+<span class="fc" id="L44">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
+        );
+<span class="fc" id="L46">    }</span>
+
+    public void activateAllSatellites(String constellationName) {
+<span class="fc" id="L49">        log.info(&quot;=== АКТИВАЦИЯ СПУТНИКОВ В ГРУППИРОВКЕ: {} ===&quot;, constellationName);</span>
+<span class="fc" id="L50">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
+                constellation -&gt; {
+<span class="fc bfc" id="L52" title="All 2 branches covered.">                    for (Satellite satellite : constellation.getSatellites()) {</span>
+<span class="fc" id="L53">                        satellite.activate();</span>
+<span class="fc" id="L54">                    }</span>
+<span class="fc" id="L55">                },</span>
+<span class="fc" id="L56">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
+        );
+<span class="fc" id="L58">    }</span>
+
+    public void showConstellationStatus(String constellationName) {
+<span class="fc" id="L61">        log.info(&quot;=== СТАТУС ГРУППИРОВКИ: {} ===&quot;, constellationName);</span>
+<span class="fc" id="L62">        constellationRepository.findByName(constellationName).ifPresentOrElse(</span>
+                constellation -&gt; {
+<span class="fc" id="L64">                    log.info(&quot;Количество спутников: {}&quot;, constellation.getSatellites().size());</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">                    for (Satellite satellite : constellation.getSatellites()) {</span>
+<span class="fc" id="L66">                        log.info(&quot;{}&quot;, satellite.getState());</span>
+<span class="fc" id="L67">                    }</span>
+<span class="fc" id="L68">                },</span>
+<span class="fc" id="L69">                () -&gt; log.error(&quot;Группировка '{}' не найдена&quot;, constellationName)</span>
+        );
+<span class="fc" id="L71">    }</span>
+
+    public boolean constellationExists(String constellationName) {
+<span class="fc" id="L74">        return constellationRepository.existsByName(constellationName);</span>
+    }
+
+    public int getConstellationCount() {
+<span class="fc" id="L78">        return constellationRepository.count();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

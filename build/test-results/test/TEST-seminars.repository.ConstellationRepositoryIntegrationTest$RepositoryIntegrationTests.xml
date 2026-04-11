@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Интеграционные тесты репозитория" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-04-11T07:07:56.330Z" hostname="ZADEBAAV" time="0.041">
+  <properties/>
+  <testcase name="Полный цикл с добавлением спутников в группировку" classname="seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests" time="0.008"/>
+  <testcase name="Полный цикл: создание группировки -&gt; сохранение -&gt; поиск -&gt; проверка" classname="seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests" time="0.009"/>
+  <testcase name="Полный цикл CRUD операций через репозиторий" classname="seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests" time="0.009"/>
+  <testcase name="getAllConstellations должен возвращать все сохранённые группировки" classname="seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests" time="0.01"/>
+  <system-out><![CDATA[2026-04-11T10:07:56.320+03:00  INFO 18828 --- [space-operation-center] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests]: RepositoryIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-04-11T10:07:56.323+03:00  INFO 18828 --- [space-operation-center] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration seminars.Main for test class seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests
+2026-04-11T10:07:56.334+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-04-11T10:07:56.335+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-04-11T10:07:56.342+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-04-11T10:07:56.343+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-04-11T10:07:56.354+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-04-11T10:07:56.355+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-04-11T10:07:56.356+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-2
+2026-04-11T10:07:56.356+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-04-11T10:07:56.356+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Удалена группировка: Орбита-Интеграция-1
+2026-04-11T10:07:56.356+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-04-11T10:07:56.365+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-04-11T10:07:56.367+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-04-11T10:07:56.367+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-2
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

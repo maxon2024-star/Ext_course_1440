@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Тесты изоляции данных между тестами</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Тесты изоляции данных между тестами</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/seminars.repository.html">seminars.repository</a> &gt; ConstellationRepositoryIntegrationTest$DataIsolationTests</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1.535s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a href="#">Tests</a>
+</li>
+<li>
+<a href="#">Standard output</a>
+</li>
+<li>
+<a href="#">Standard error</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">После setUp репозиторий должен быть пустым</td>
+<td class="success">afterSetUp_repositoryShouldBeEmpty()</td>
+<td class="success">0.009s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Данные между тестами должны быть изолированы</td>
+<td class="success">dataBetweenTests_shouldBeIsolated()</td>
+<td class="success">1.526s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>10:07:48.706 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests]: DataIsolationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:07:48.712 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration seminars.Main for test class seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.2)
+
+2026-04-11T10:07:49.722+03:00  INFO 18828 --- [space-operation-center] [    Test worker] r.ConstellationRepositoryIntegrationTest : Starting ConstellationRepositoryIntegrationTest using Java 21.0.10 with PID 18828 (started by MaxZ in C:\Users\MaxZ\IdeaProjects\Ext_course_1440)
+2026-04-11T10:07:49.725+03:00  INFO 18828 --- [space-operation-center] [    Test worker] r.ConstellationRepositoryIntegrationTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2026-04-11T10:07:52.868+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.s.service.ConfiguredMissionScheduler   : === Инициализация Планировщика Миссий ===
+2026-04-11T10:07:52.870+03:00  WARN 18828 --- [space-operation-center] [    Test worker] s.s.service.ConfiguredMissionScheduler   : В конфигурации (application-scheduler.yml) не найдено ни одной миссии!
+2026-04-11T10:07:53.687+03:00  INFO 18828 --- [space-operation-center] [    Test worker] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-04-11T10:07:54.635+03:00  INFO 18828 --- [space-operation-center] [    Test worker] r.ConstellationRepositoryIntegrationTest : Started ConstellationRepositoryIntegrationTest in 5.778 seconds (process running for 10.188)
+2026-04-11T10:07:56.159+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-04-11T10:07:56.165+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-04-11T10:07:56.207+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+</pre>
+</span>
+</div>
+<div class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\MaxZ\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.15.11\a38b16385e867f59a641330f0362ebe742788ed8\byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 9.0.0</a> at 11 апр. 2026 г., 10:07:58</p>
+</div>
+</div>
+</body>
+</html>
