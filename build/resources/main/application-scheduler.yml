@@ -1,0 +1,18 @@
+server:
+  port: 8081 # Порт для планировщика
+
+spring:
+  application:
+    name: mission-scheduler
+
+app:
+  space-center-service:
+    url: "http://localhost:7070/api" # Адрес твоего основного сервиса
+    missions:
+      - targetType: CONSTELLATION
+        constellationName: "Орбита-1"
+        cron: "0 * * * * *" # Каждую минуту (для быстрого теста)
+      - targetType: SINGLE_SATELLITE
+        constellationName: "Орбита-1"
+        satelliteName: "Связь-1"
+        cron: "*/30 * * * * *" # Каждые 30 секунд (для быстрого теста)

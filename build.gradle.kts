@@ -15,8 +15,12 @@ repositories {
 }
 
 dependencies {
-    // Spring Boot
+    // Spring Boot Core & Web
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web") // Для REST API
+
+    // Swagger / OpenAPI
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5")
 
     // Lombok
     compileOnly("org.projectlombok:lombok")
@@ -53,4 +57,8 @@ tasks.jacocoTestReport {
 
 jacoco {
     toolVersion = "0.8.12"
+}
+
+springBoot {
+    mainClass.set("seminars.Main")
 }

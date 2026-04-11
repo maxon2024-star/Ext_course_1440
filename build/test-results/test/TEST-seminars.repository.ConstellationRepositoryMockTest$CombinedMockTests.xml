@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Комбинированные тесты с моками" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:36:24.777Z" hostname="ZADEBAAV" time="0.342">
+<testsuite name="Комбинированные тесты с моками" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-04-11T07:07:56.388Z" hostname="ZADEBAAV" time="0.659">
   <properties/>
-  <testcase name="Последовательность save -&gt; findByName должна работать корректно" classname="seminars.repository.ConstellationRepositoryMockTest$CombinedMockTests" time="0.33"/>
-  <testcase name="Полный цикл CRUD операций с моками" classname="seminars.repository.ConstellationRepositoryMockTest$CombinedMockTests" time="0.009"/>
+  <testcase name="Последовательность save -&gt; findByName должна работать корректно" classname="seminars.repository.ConstellationRepositoryMockTest$CombinedMockTests" time="0.625"/>
+  <testcase name="Полный цикл CRUD операций с моками" classname="seminars.repository.ConstellationRepositoryMockTest$CombinedMockTests" time="0.026"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

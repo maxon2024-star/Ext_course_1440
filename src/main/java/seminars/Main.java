@@ -1,5 +1,6 @@
 package seminars;
 
+import org.springframework.beans.BeansException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -69,8 +70,8 @@ public class Main {
 
             System.out.println(constellationRepository.getAllConstellations());
 
-        } finally {
-            context.close();
+        } catch (BeansException e) {
+            throw new RuntimeException(e);
         }
     }
 }

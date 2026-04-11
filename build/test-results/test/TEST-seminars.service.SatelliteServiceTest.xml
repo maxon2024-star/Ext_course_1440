@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seminars.service.SatelliteServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:36:25.406Z" hostname="ZADEBAAV" time="0.01">
+<testsuite name="seminars.service.SatelliteServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-04-11T07:07:57.673Z" hostname="ZADEBAAV" time="0.021">
   <properties/>
-  <testcase name="testCreateCommunicationSatelliteThroughService()" classname="seminars.service.SatelliteServiceTest" time="0.006"/>
-  <testcase name="testCreateImagingSatelliteThroughService()" classname="seminars.service.SatelliteServiceTest" time="0.003"/>
-  <system-out><![CDATA[2026-03-24T20:36:25.406+03:00  INFO 24048 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [seminars.service.SatelliteServiceTest]: SatelliteServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-03-24T20:36:25.409+03:00  INFO 24048 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration seminars.Main for test class seminars.service.SatelliteServiceTest
+  <testcase name="testCreateCommunicationSatelliteThroughService()" classname="seminars.service.SatelliteServiceTest" time="0.01"/>
+  <testcase name="testCreateImagingSatelliteThroughService()" classname="seminars.service.SatelliteServiceTest" time="0.009"/>
+  <system-out><![CDATA[2026-04-11T10:07:57.657+03:00  INFO 18828 --- [space-operation-center] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [seminars.service.SatelliteServiceTest]: SatelliteServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-04-11T10:07:57.661+03:00  INFO 18828 --- [space-operation-center] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration seminars.Main for test class seminars.service.SatelliteServiceTest
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

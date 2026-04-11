@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConfiguredMissionScheduler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ext_course_1440</a> &gt; <a href="index.source.html" class="el_package">seminars.scheduler.service</a> &gt; <span class="el_source">ConfiguredMissionScheduler.java</span></div><h1>ConfiguredMissionScheduler.java</h1><pre class="source lang-java linenums">package seminars.scheduler.service;
+
+import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.TaskScheduler;
+import org.springframework.scheduling.support.CronTrigger;
+import org.springframework.stereotype.Service;
+import seminars.dto.MissionRequest;
+import seminars.scheduler.client.SpaceOperationClient;
+import seminars.scheduler.config.MissionProperties;
+
+<span class="fc" id="L13">@Slf4j</span>
+@Service
+@RequiredArgsConstructor
+public class ConfiguredMissionScheduler {
+
+    private final MissionProperties properties;
+    private final SpaceOperationClient client;
+    private final TaskScheduler taskScheduler;
+
+    @PostConstruct
+    public void scheduleMissions() {
+<span class="fc" id="L24">        log.info(&quot;=== Инициализация Планировщика Миссий ===&quot;);</span>
+
+<span class="pc bpc" id="L26" title="3 of 4 branches missed.">        if (properties.missions() == null || properties.missions().isEmpty()) {</span>
+<span class="fc" id="L27">            log.warn(&quot;В конфигурации (application-scheduler.yml) не найдено ни одной миссии!&quot;);</span>
+<span class="fc" id="L28">            return;</span>
+        }
+
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        for (MissionProperties.MissionConfig config : properties.missions()) {</span>
+<span class="nc" id="L32">            MissionRequest request = new MissionRequest(</span>
+<span class="nc" id="L33">                    config.targetType(),</span>
+<span class="nc" id="L34">                    config.constellationName(),</span>
+<span class="nc" id="L35">                    config.satelliteName()</span>
+            );
+
+<span class="nc" id="L38">            Runnable task = () -&gt; {</span>
+<span class="nc" id="L39">                log.info(&quot;&gt;&gt;&gt; Сработал планировщик по CRON [{}]: Цель {}&quot;, config.cron(), config.targetType());</span>
+<span class="nc" id="L40">                client.executeMission(request);</span>
+<span class="nc" id="L41">            };</span>
+
+<span class="nc" id="L43">            taskScheduler.schedule(task, new CronTrigger(config.cron()));</span>
+<span class="nc" id="L44">            log.info(&quot;Запланирована миссия: Группировка '{}', Спутник '{}', Расписание: {}&quot;,</span>
+<span class="nc" id="L45">                    config.constellationName(), config.satelliteName(), config.cron());</span>
+<span class="nc" id="L46">        }</span>
+<span class="nc" id="L47">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

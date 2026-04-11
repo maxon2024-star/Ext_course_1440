@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Тесты метода clear()" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-03-24T17:36:25.224Z" hostname="ZADEBAAV" time="0.003">
+<testsuite name="Тесты метода clear()" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-04-11T07:07:57.311Z" hostname="ZADEBAAV" time="0.009">
   <properties/>
-  <testcase name="Очистка репозитория должна удалять все группировки" classname="seminars.repository.ConstellationRepositoryUnitTest$ClearTests" time="0.001"/>
-  <testcase name="Очистка пустого репозитория не должна вызывать ошибок" classname="seminars.repository.ConstellationRepositoryUnitTest$ClearTests" time="0.002"/>
-  <system-out><![CDATA[2026-03-24T20:36:25.231+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
-2026-03-24T20:36:25.231+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-2
-2026-03-24T20:36:25.231+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-03-24T20:36:25.233+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+  <testcase name="Очистка репозитория должна удалять все группировки" classname="seminars.repository.ConstellationRepositoryUnitTest$ClearTests" time="0.003"/>
+  <testcase name="Очистка пустого репозитория не должна вызывать ошибок" classname="seminars.repository.ConstellationRepositoryUnitTest$ClearTests" time="0.005"/>
+  <system-out><![CDATA[2026-04-11T10:07:57.312+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-1
+2026-04-11T10:07:57.313+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-2
+2026-04-11T10:07:57.313+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-04-11T10:07:57.318+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

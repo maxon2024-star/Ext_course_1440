@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1.225s</div>
+<div class="counter">1.535s</div>
 <p>duration</p>
 </div>
 </td>
@@ -84,13 +84,13 @@
 <tr>
 <td class="success">После setUp репозиторий должен быть пустым</td>
 <td class="success">afterSetUp_repositoryShouldBeEmpty()</td>
-<td class="success">0.004s</td>
+<td class="success">0.009s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Данные между тестами должны быть изолированы</td>
 <td class="success">dataBetweenTests_shouldBeIsolated()</td>
-<td class="success">1.221s</td>
+<td class="success">1.526s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -98,8 +98,8 @@
 <div class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>20:36:20.370 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests]: DataIsolationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-20:36:20.374 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration seminars.Main for test class seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests
+<pre>10:07:48.706 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests]: DataIsolationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:07:48.712 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration seminars.Main for test class seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -110,12 +110,15 @@
 
  :: Spring Boot ::                (v3.4.2)
 
-2026-03-24T20:36:21.480+03:00  INFO 24048 --- [    Test worker] r.ConstellationRepositoryIntegrationTest : Starting ConstellationRepositoryIntegrationTest using Java 21.0.10 with PID 24048 (started by MaxZ in C:\Users\MaxZ\IdeaProjects\Ext_course_1440)
-2026-03-24T20:36:21.493+03:00  INFO 24048 --- [    Test worker] r.ConstellationRepositoryIntegrationTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2026-03-24T20:36:23.445+03:00  INFO 24048 --- [    Test worker] r.ConstellationRepositoryIntegrationTest : Started ConstellationRepositoryIntegrationTest in 2.97 seconds (process running for 5.658)
-2026-03-24T20:36:24.656+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
-2026-03-24T20:36:24.665+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
-2026-03-24T20:36:24.689+03:00  INFO 24048 --- [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-04-11T10:07:49.722+03:00  INFO 18828 --- [space-operation-center] [    Test worker] r.ConstellationRepositoryIntegrationTest : Starting ConstellationRepositoryIntegrationTest using Java 21.0.10 with PID 18828 (started by MaxZ in C:\Users\MaxZ\IdeaProjects\Ext_course_1440)
+2026-04-11T10:07:49.725+03:00  INFO 18828 --- [space-operation-center] [    Test worker] r.ConstellationRepositoryIntegrationTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2026-04-11T10:07:52.868+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.s.service.ConfiguredMissionScheduler   : === Инициализация Планировщика Миссий ===
+2026-04-11T10:07:52.870+03:00  WARN 18828 --- [space-operation-center] [    Test worker] s.s.service.ConfiguredMissionScheduler   : В конфигурации (application-scheduler.yml) не найдено ни одной миссии!
+2026-04-11T10:07:53.687+03:00  INFO 18828 --- [space-operation-center] [    Test worker] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-04-11T10:07:54.635+03:00  INFO 18828 --- [space-operation-center] [    Test worker] r.ConstellationRepositoryIntegrationTest : Started ConstellationRepositoryIntegrationTest in 5.778 seconds (process running for 10.188)
+2026-04-11T10:07:56.159+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
+2026-04-11T10:07:56.165+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Сохранена группировка: Орбита-Интеграция-1
+2026-04-11T10:07:56.207+03:00  INFO 18828 --- [space-operation-center] [    Test worker] s.repository.ConstellationRepository     : Репозиторий очищен
 </pre>
 </span>
 </div>
@@ -138,7 +141,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.0.0</a> at 24 мар. 2026 г., 20:36:25</p>
+<a href="https://www.gradle.org">Gradle 9.0.0</a> at 11 апр. 2026 г., 10:07:58</p>
 </div>
 </div>
 </body>
