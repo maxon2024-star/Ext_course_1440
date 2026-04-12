@@ -1,0 +1,40 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: server
+    environment:
+      - SERVER_PORT=7070
+    ports:
+      - "7070:7070"
+    networks:
+      - space-network
+    # Healthcheck проверяет, поднялся ли сервер. nc -z проверяет доступность порта.
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "7070"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mission-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.mission
+    container_name: mission-service
+    depends_on:
+      server:
+        condition: service_healthy # Ожидаем, пока healthcheck сервера не вернет success
+    environment:
+      - SERVER_PORT=8081
+      # Переопределяем URL из application-scheduler.yml на сетевое имя контейнера Docker
+      - APP_SPACE_CENTER_SERVICE_URL=http://server:7070/api
+      - SECRET_KEY=${MISSION_SECRET_KEY}
+    ports:
+      - "8081:8081"
+    networks:
+      - space-network
+
+networks:
+  space-network:
+    driver: bridge

@@ -1,0 +1,59 @@
+name: Space Operation CI/CD & Security
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-test-scan:
+    runs-on: ubuntu-latest
+
+    # Указываем рабочую директорию, где лежат файлы проекта
+    defaults:
+      run:
+        working-directory: ./Ext_course_1440-Planner-task-8
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Run Unit Tests
+        run: gradle test
+
+      # 1. SAST (Static Application Security Testing)
+      # Сканируем исходный код и Dockerfile на уязвимости и плохие практики ДО сборки
+      - name: Run Trivy SAST scanner (Filesystem)
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: './Ext_course_1440
+          format: 'table'
+          # exit-code: '0' означает, что при нахождении уязвимостей сборка не упадет (только покажет отчет)
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH'
+
+      # Собираем Docker-образы. Передаем секрет из GitHub Secrets в окружение сборки
+      - name: Build Docker Compose Images
+        env:
+          MISSION_SECRET_KEY: ${{ secrets.MISSION_SECRET_KEY }}
+        run: docker compose build
+
+      # 2. DAST / Container Image Scanning
+      # Сканируем уже собранный образ сервера на наличие дыр в зависимостях (например, уязвимые версии библиотек Linux или Java)
+      - name: Run Trivy Image scanner on Server
+        uses: aquasecurity/trivy-action@master
+        with:
+          # Имя образа берется из того, как docker compose назвал его локально при сборке
+          image-ref: 'ext_course_1440-server:latest'
+          format: 'table'
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH'
