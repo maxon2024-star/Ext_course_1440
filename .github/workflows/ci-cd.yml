@@ -2,18 +2,16 @@ name: Space Operation CI/CD & Security
 
 on:
   push:
-    branches: [ "main", "master" ]
+    # Запуск при пуше в любую ветку
+    branches: [ "**" ]
   pull_request:
-    branches: [ "main", "master" ]
+    branches: [ "**" ]
+  # Позволяет запускать пайплайн вручную в интерфейсе GitHub
   workflow_dispatch:
 
 jobs:
   build-test-scan:
     runs-on: ubuntu-latest
-    
-    defaults:
-      run:
-        working-directory: ./Ext_course_1440
 
     steps:
       - name: Checkout Code
@@ -24,29 +22,37 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-          cache: gradle
+
+      # Используем официальный экшен для работы с Gradle без wrapper (gradlew)
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
       - name: Run Unit Tests
         run: gradle test
 
+      # SAST сканирование (анализ безопасности кода и конфигов)
       - name: Run Trivy SAST scanner (Filesystem)
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
-          scan-ref: './Ext_course_1440-Planner-task-8'
+          scan-ref: '.'
           format: 'table'
           exit-code: '0'
           severity: 'CRITICAL,HIGH'
 
+      # Сборка образов через Docker Compose
       - name: Build Docker Compose Images
         env:
           MISSION_SECRET_KEY: ${{ secrets.MISSION_SECRET_KEY }}
         run: docker compose build
 
+      # Сканирование собранного образа на уязвимости (DAST-lite)
       - name: Run Trivy Image scanner on Server
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'ext_course_1440-server:latest'
+          # Здесь имя образа обычно соответствует формату: название_папки-имя_сервиса
+          # Если репозиторий называется ext_course_1440, то образ будет таким:
+          image-ref: 'Ext_course_1440-server:latest'
           format: 'table'
           exit-code: '0'
           severity: 'CRITICAL,HIGH'
