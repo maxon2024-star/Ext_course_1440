@@ -51,8 +51,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           # Здесь имя образа обычно соответствует формату: название_папки-имя_сервиса
-          # Если репозиторий называется ext_course_1440, то образ будет таким:
-          image-ref: 'Ext_course_1440-server:latest'
+          image-ref: 'ext_course_1440-server:latest'
           format: 'table'
           exit-code: '0'
           severity: 'CRITICAL,HIGH'
