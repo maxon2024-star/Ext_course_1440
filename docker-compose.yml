@@ -1,0 +1,60 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: server
+    environment:
+      - SERVER_PORT=7070
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/space_db
+    ports:
+      - "7070:7070"
+    networks:
+      - space-network
+    depends_on:
+      - postgres
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "7070"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mission-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.mission
+    container_name: mission-service
+    depends_on:
+      server:
+        condition: service_healthy # Ожидаем, пока healthcheck сервера не вернет success
+    environment:
+      - SERVER_PORT=8081
+      # Переопределяем URL из application-scheduler.yml на сетевое имя контейнера Docker
+      - APP_SPACE_CENTER_SERVICE_URL=http://server:7070/api
+      - SECRET_KEY=${MISSION_SECRET_KEY}
+    ports:
+      - "8081:8081"
+    networks:
+      - space-network
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: space_postgres
+    environment:
+      POSTGRES_USER: space_user
+      POSTGRES_PASSWORD: space_password
+      POSTGRES_DB: space_db
+    ports:
+      - "5440:5432" # Проброс порта (5440 на хосте -> 5432 в контейнере)
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - space-network
+
+networks:
+  space-network:
+    driver: bridge
+volumes:
+  pgdata:

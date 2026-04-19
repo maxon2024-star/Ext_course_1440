@@ -1,0 +1,25 @@
+# Build stage
+FROM gradle:8-jdk21-alpine AS builder
+WORKDIR /build
+
+# Копируем конфигурацию сборки
+COPY build.gradle.kts .
+COPY settings.gradle.kts .
+COPY src src
+
+# Собираем проект
+RUN gradle clean bootJar -x test
+
+# Run stage
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+
+# Настраиваем пользователя
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+USER appuser
+
+# Копируем собранный JAR
+COPY --from=builder /build/build/libs/Ext_course_1440-1.0.0.jar app.jar
+
+EXPOSE 7070
+ENTRYPOINT ["java", "-jar", "app.jar"]

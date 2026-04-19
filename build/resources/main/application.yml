@@ -1,0 +1,28 @@
+server:
+  port: 7070
+
+spring:
+  application:
+    name: space-operation-center
+
+  datasource:
+    url: jdbc:postgresql://localhost:5440/space_db
+    username: space_user
+    password: space_password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate # Важно! Мы используем Flyway, Hibernate только проверяет схему
+    show-sql: true # Для отладки запросов (потом можно выключить)
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

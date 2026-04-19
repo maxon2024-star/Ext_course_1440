@@ -1,0 +1,29 @@
+# Build stage
+FROM gradle:8-jdk21-alpine AS builder
+WORKDIR /build
+
+# Копируем конфигурацию сборки
+COPY build.gradle.kts .
+COPY settings.gradle.kts .
+COPY src src
+
+RUN gradle clean bootJar -x test
+
+# Распаковываем fat-jar прямо в контейнере-сборщике
+RUN mkdir -p unpacked && cd unpacked && jar -xf ../build/libs/Ext_course_1440-1.0.0.jar
+
+# Run stage
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+USER appuser
+
+# Копируем структуру
+COPY --from=builder /build/unpacked/BOOT-INF/lib /app/lib
+COPY --from=builder /build/unpacked/META-INF /app/META-INF
+COPY --from=builder /build/unpacked/BOOT-INF/classes /app
+
+EXPOSE 8081
+
+ENTRYPOINT ["java", "-cp", "/app:/app/lib/*", "seminars.scheduler.SchedulerApplication"]
