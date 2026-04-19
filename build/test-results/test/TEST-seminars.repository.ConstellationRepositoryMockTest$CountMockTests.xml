@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Тесты метода count() с моками" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-04-11T07:07:57.082Z" hostname="ZADEBAAV" time="0.013">
+<testsuite name="Тесты метода count() с моками" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-04-19T19:56:41.551Z" hostname="ZADEBAAV" time="0.017">
   <properties/>
-  <testcase name="Мок count() должен возвращать 0 для пустого репозитория" classname="seminars.repository.ConstellationRepositoryMockTest$CountMockTests" time="0.006"/>
-  <testcase name="Мок count() должен возвращать настроенное значение" classname="seminars.repository.ConstellationRepositoryMockTest$CountMockTests" time="0.005"/>
+  <testcase name="Мок count() должен возвращать 0 для пустого репозитория" classname="seminars.repository.ConstellationRepositoryMockTest$CountMockTests" time="0.009"/>
+  <testcase name="Мок count() должен возвращать настроенное значение" classname="seminars.repository.ConstellationRepositoryMockTest$CountMockTests" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

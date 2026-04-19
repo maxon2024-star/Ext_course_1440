@@ -22,13 +22,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">51</div>
+<div class="counter">14</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">10</div>
 <p>failures</p>
 </div>
 </td>
@@ -40,7 +40,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">2.514s</div>
+<div class="counter">3.989s</div>
 <p>duration</p>
 </div>
 </td>
@@ -49,8 +49,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">28%</div>
 <p>successful</p>
 </div>
 </td>
@@ -60,9 +60,57 @@
 <div class="tab-container">
 <ul class="tabLinks">
 <li>
+<a href="#">Failed tests</a>
+</li>
+<li>
 <a href="#">Classes</a>
 </li>
 </ul>
+<div class="tab">
+<h2>Failed tests</h2>
+<ul class="linkList">
+<li>
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html">Интеграционные тесты репозитория</a>.
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html#fullCrudCycle_shouldWorkCorrectly()">Полный цикл CRUD операций через репозиторий</a>
+</li>
+<li>
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html">Интеграционные тесты репозитория</a>.
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html#fullLifecycle_createSaveFindVerify_shouldWorkCorrectly()">Полный цикл: создание группировки -&gt; сохранение -&gt; поиск -&gt; проверка</a>
+</li>
+<li>
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html">Интеграционные тесты репозитория</a>.
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html#fullLifecycle_withSatellites_shouldPreserveData()">Полный цикл с добавлением спутников в группировку</a>
+</li>
+<li>
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html">Интеграционные тесты репозитория</a>.
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html#getAllConstellations_shouldReturnAllSaved()">getAllConstellations должен возвращать все сохранённые группировки</a>
+</li>
+<li>
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>.
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html#activateAndExecuteMission_throughService_shouldWorkCorrectly()">activateAndExecuteMission_throughService_shouldWorkCorrectly()</a>
+</li>
+<li>
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>.
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html#addSatellitesToDifferentConstellations_throughService_shouldWorkCorrectly()">addSatellitesToDifferentConstellations_throughService_shouldWorkCorrectly()</a>
+</li>
+<li>
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>.
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html#createMultipleConstellations_throughService_shouldWorkCorrectly()">createMultipleConstellations_throughService_shouldWorkCorrectly()</a>
+</li>
+<li>
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>.
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html#fullLifecycle_throughService_shouldWorkCorrectly()">fullLifecycle_throughService_shouldWorkCorrectly()</a>
+</li>
+<li>
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>.
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html#operationsWithNonExistentConstellation_throughService_shouldHandleCorrectly()">operationsWithNonExistentConstellation_throughService_shouldHandleCorrectly()</a>
+</li>
+<li>
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>.
+<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html#showConstellationStatus_throughService_shouldWorkCorrectly()">showConstellationStatus_throughService_shouldWorkCorrectly()</a>
+</li>
+</ul>
+</div>
 <div class="tab">
 <h2>Classes</h2>
 <table>
@@ -87,53 +135,33 @@
 <td class="success">-</td>
 </tr>
 <tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests.html">Тесты изоляции данных между тестами</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>1.535s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
+<td class="failures">
 <a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html">Интеграционные тесты репозитория</a>
 </td>
 <td>4</td>
+<td>4</td>
 <td>0</td>
-<td>0</td>
-<td>0.036s</td>
-<td class="success">100%</td>
+<td>0.008s</td>
+<td class="failures">0%</td>
 </tr>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="../classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>
 </td>
 <td>6</td>
+<td>6</td>
 <td>0</td>
-<td>0</td>
-<td>0.072s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryMockTest$ClearMockTests.html">Тесты метода clear() с моками</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.016s</td>
-<td class="success">100%</td>
+<td>0.037s</td>
+<td class="failures">0%</td>
 </tr>
 <tr>
 <td class="success">
 <a href="../classes/seminars.repository.ConstellationRepositoryMockTest$CombinedMockTests.html">Комбинированные тесты с моками</a>
 </td>
-<td>2</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0.651s</td>
+<td>3.913s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -143,137 +171,17 @@
 <td>2</td>
 <td>0</td>
 <td>0</td>
-<td>0.011s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryMockTest$DeleteByNameMockTests.html">Тесты метода deleteByName() с моками</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.017s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryMockTest$ExistsByNameMockTests.html">Тесты метода existsByName() с моками</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.022s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryMockTest$FindByNameMockTests.html">Тесты метода findByName() с моками</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.026s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryMockTest$GetAllConstellationsMockTests.html">Тесты метода getAllConstellations() с моками</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.024s</td>
+<td>0.016s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
 <td class="success">
 <a href="../classes/seminars.repository.ConstellationRepositoryMockTest$SaveMockTests.html">Тесты метода save() с моками</a>
 </td>
-<td>3</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0.035s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryUnitTest$BoundaryTests.html">Граничные тесты</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.018s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryUnitTest$ClearTests.html">Тесты метода clear()</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.008s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryUnitTest$CountTests.html">Тесты метода count()</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.011s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryUnitTest$DeleteByNameTests.html">Тесты метода deleteByName()</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.006s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryUnitTest$ExistsByNameTests.html">Тесты метода existsByName()</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.007s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryUnitTest$FindByNameTests.html">Тесты метода findByName()</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.006s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryUnitTest$GetAllConstellationsTests.html">Тесты метода getAllConstellations()</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.005s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="../classes/seminars.repository.ConstellationRepositoryUnitTest$SaveTests.html">Тесты метода save()</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.008s</td>
+<td>0.015s</td>
 <td class="success">100%</td>
 </tr>
 </table>
@@ -286,7 +194,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.0.0</a> at 11 апр. 2026 г., 10:07:58</p>
+<a href="https://www.gradle.org">Gradle 9.0.0</a> at 19 апр. 2026 г., 22:56:43</p>
 </div>
 </div>
 </body>

@@ -1,13 +1,26 @@
 package seminars.satellite;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
+@Entity
+@Table(name = "imaging_satellite")
 @Getter
+@Setter
+@NoArgsConstructor // Для Hibernate
 @ToString(callSuper = true)
 public class ImagingSatellite extends Satellite {
+
+    @Column(name = "photos_taken")
     private int photosTaken;
-    private final double resolution;
+
+    @Column(nullable = false)
+    private double resolution;
 
     public ImagingSatellite(String name, double initialEnergy, double resolution) {
         super(name, initialEnergy);
@@ -18,10 +31,12 @@ public class ImagingSatellite extends Satellite {
     @Override
     public void activate() {
         if (energy.consumeEnergy(0.08)) {
-            state = new SatelliteState(true, "Активен");
+            state.setActive(true);
+            state.setMessage("Активен");
             System.out.println("✅ " + name + ": Активация успешна");
         } else {
-            state = new SatelliteState(false, "Недостаточно энергии");
+            state.setActive(false);
+            state.setMessage("Недостаточно энергии");
             System.out.println("❌ " + name + ": Недостаточно энергии для активации");
         }
     }
@@ -35,10 +50,5 @@ public class ImagingSatellite extends Satellite {
         } else {
             System.out.println(name + ": Невозможно выполнить миссию (не активен или недостаточно энергии)");
         }
-    }
-
-    @Override
-    public SatelliteState getState() {
-        return state;
     }
 }

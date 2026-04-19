@@ -1,46 +1,42 @@
 package seminars.repository;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import seminars.constellation.SatelliteConstellation;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-@Slf4j
-@Component
-public class ConstellationRepository {
-    private final Map<String, SatelliteConstellation> constellations = new HashMap<>();
+@Repository
+public interface ConstellationRepository extends JpaRepository<SatelliteConstellation, Long> {
 
-    public void save(SatelliteConstellation constellation) {
-        constellations.put(constellation.getConstellationName(), constellation);
-        log.info("Сохранена группировка: {}", constellation.getConstellationName());
+    Optional<SatelliteConstellation> findByConstellationName(String name);
+    boolean existsByConstellationName(String name);
+    void deleteByConstellationName(String name);
+
+    // =========================================================
+    // Блок совместимости со старым кодом (чтобы не ломать сервисы)
+    // =========================================================
+
+    default Optional<SatelliteConstellation> findByName(String name) {
+        return findByConstellationName(name);
     }
 
-    public Optional<SatelliteConstellation> findByName(String name) {
-        return Optional.ofNullable(constellations.get(name));
+    default Map<String, SatelliteConstellation> getAllConstellations() {
+        return findAll().stream()
+                .collect(Collectors.toMap(SatelliteConstellation::getConstellationName, c -> c));
     }
 
-    public Map<String, SatelliteConstellation> getAllConstellations() {
-        return new HashMap<>(constellations);
+    default boolean existsByName(String name) {
+        return existsByConstellationName(name);
     }
 
-    public boolean existsByName(String name) {
-        return constellations.containsKey(name);
+    default void deleteByName(String name) {
+        deleteByConstellationName(name);
     }
 
-    public void deleteByName(String name) {
-        constellations.remove(name);
-        log.info("Удалена группировка: {}", name);
-    }
-
-    public int count() {
-        return constellations.size();
-    }
-
-    public void clear() {
-        constellations.clear();
-        log.info("Репозиторий очищен");
+    default void clear() {
+        deleteAll();
     }
 }

@@ -35,6 +35,20 @@ dependencies {
 
     // Spring Boot AOP (для Decorator / Aspect)
     implementation("org.springframework.boot:spring-boot-starter-aop")
+
+    // БД и JPA
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtimeOnly("org.postgresql:postgresql")
+
+    // Flyway для миграций БД (в Spring Boot 3.x нужен отдельный модуль для Postgres)
+    implementation("org.flywaydb:flyway-core")
+    implementation("org.flywaydb:flyway-database-postgresql")
+
+    // Testcontainers для интеграционных тестов
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
+    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:postgresql")
 }
 
 tasks.withType<Test> {

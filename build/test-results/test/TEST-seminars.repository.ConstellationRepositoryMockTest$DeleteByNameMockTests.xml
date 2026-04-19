@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Тесты метода deleteByName() с моками" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-04-11T07:07:57.102Z" hostname="ZADEBAAV" time="0.018">
-  <properties/>
-  <testcase name="Мок deleteByName() не должен выбрасывать исключения" classname="seminars.repository.ConstellationRepositoryMockTest$DeleteByNameMockTests" time="0.009"/>
-  <testcase name="Мок deleteByName() должен вызываться с правильным именем" classname="seminars.repository.ConstellationRepositoryMockTest$DeleteByNameMockTests" time="0.008"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

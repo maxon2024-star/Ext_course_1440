@@ -6,11 +6,14 @@ services:
     container_name: server
     environment:
       - SERVER_PORT=7070
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/space_db
     ports:
       - "7070:7070"
     networks:
       - space-network
-    # Healthcheck проверяет, поднялся ли сервер. nc -z проверяет доступность порта.
+    depends_on:
+      - postgres
+    restart: on-failure
     healthcheck:
       test: ["CMD", "nc", "-z", "localhost", "7070"]
       interval: 10s
@@ -35,6 +38,23 @@ services:
     networks:
       - space-network
 
+  postgres:
+    image: postgres:15-alpine
+    container_name: space_postgres
+    environment:
+      POSTGRES_USER: space_user
+      POSTGRES_PASSWORD: space_password
+      POSTGRES_DB: space_db
+    ports:
+      - "5440:5432" # Проброс порта (5440 на хосте -> 5432 в контейнере)
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - space-network
+
 networks:
   space-network:
     driver: bridge
+volumes:
+  pgdata:

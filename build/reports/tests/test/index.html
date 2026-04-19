@@ -20,13 +20,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">66</div>
+<div class="counter">29</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">15</div>
 <p>failures</p>
 </div>
 </td>
@@ -38,7 +38,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">2.675s</div>
+<div class="counter">4.205s</div>
 <p>duration</p>
 </div>
 </td>
@@ -47,8 +47,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">48%</div>
 <p>successful</p>
 </div>
 </td>
@@ -58,12 +58,80 @@
 <div class="tab-container">
 <ul class="tabLinks">
 <li>
+<a href="#">Failed tests</a>
+</li>
+<li>
 <a href="#">Packages</a>
 </li>
 <li>
 <a href="#">Classes</a>
 </li>
 </ul>
+<div class="tab">
+<h2>Failed tests</h2>
+<ul class="linkList">
+<li>
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html">Интеграционные тесты репозитория</a>.
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html#fullCrudCycle_shouldWorkCorrectly()">Полный цикл CRUD операций через репозиторий</a>
+</li>
+<li>
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html">Интеграционные тесты репозитория</a>.
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html#fullLifecycle_createSaveFindVerify_shouldWorkCorrectly()">Полный цикл: создание группировки -&gt; сохранение -&gt; поиск -&gt; проверка</a>
+</li>
+<li>
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html">Интеграционные тесты репозитория</a>.
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html#fullLifecycle_withSatellites_shouldPreserveData()">Полный цикл с добавлением спутников в группировку</a>
+</li>
+<li>
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html">Интеграционные тесты репозитория</a>.
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html#getAllConstellations_shouldReturnAllSaved()">getAllConstellations должен возвращать все сохранённые группировки</a>
+</li>
+<li>
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>.
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html#activateAndExecuteMission_throughService_shouldWorkCorrectly()">activateAndExecuteMission_throughService_shouldWorkCorrectly()</a>
+</li>
+<li>
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>.
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html#addSatellitesToDifferentConstellations_throughService_shouldWorkCorrectly()">addSatellitesToDifferentConstellations_throughService_shouldWorkCorrectly()</a>
+</li>
+<li>
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>.
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html#createMultipleConstellations_throughService_shouldWorkCorrectly()">createMultipleConstellations_throughService_shouldWorkCorrectly()</a>
+</li>
+<li>
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>.
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html#fullLifecycle_throughService_shouldWorkCorrectly()">fullLifecycle_throughService_shouldWorkCorrectly()</a>
+</li>
+<li>
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>.
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html#operationsWithNonExistentConstellation_throughService_shouldHandleCorrectly()">operationsWithNonExistentConstellation_throughService_shouldHandleCorrectly()</a>
+</li>
+<li>
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">Интеграционные тесты сервиса с репозиторием</a>.
+<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html#showConstellationStatus_throughService_shouldWorkCorrectly()">showConstellationStatus_throughService_shouldWorkCorrectly()</a>
+</li>
+<li>
+<a href="classes/seminars.service.ConstellationServiceIntegrationTest.html">SpaceOperationCenterService - Интеграционные тесты</a>.
+<a href="classes/seminars.service.ConstellationServiceIntegrationTest.html#constellationExists_shouldCheckRepository()">constellationExists должен проверять существование в репозитории</a>
+</li>
+<li>
+<a href="classes/seminars.service.ConstellationServiceIntegrationTest.html">SpaceOperationCenterService - Интеграционные тесты</a>.
+<a href="classes/seminars.service.ConstellationServiceIntegrationTest.html#createConstellation_shouldSaveToRepository()">Создание группировки через сервис должно сохранять в репозиторий</a>
+</li>
+<li>
+<a href="classes/seminars.service.ConstellationServiceIntegrationTest.html">SpaceOperationCenterService - Интеграционные тесты</a>.
+<a href="classes/seminars.service.ConstellationServiceIntegrationTest.html#getConstellationCount_shouldReturnActualCount()">getConstellationCount должен возвращать актуальное количество</a>
+</li>
+<li>
+<a href="classes/seminars.service.SatelliteServiceTest.html">SatelliteServiceTest</a>.
+<a href="classes/seminars.service.SatelliteServiceTest.html#testCreateCommunicationSatelliteThroughService()">testCreateCommunicationSatelliteThroughService()</a>
+</li>
+<li>
+<a href="classes/seminars.service.SatelliteServiceTest.html">SatelliteServiceTest</a>.
+<a href="classes/seminars.service.SatelliteServiceTest.html#testCreateImagingSatelliteThroughService()">testCreateImagingSatelliteThroughService()</a>
+</li>
+</ul>
+</div>
 <div class="tab">
 <h2>Packages</h2>
 <table>
@@ -79,14 +147,14 @@
 </thead>
 <tbody>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="packages/seminars.repository.html">seminars.repository</a>
 </td>
-<td>51</td>
+<td>14</td>
+<td>10</td>
 <td>0</td>
-<td>0</td>
-<td>2.514s</td>
-<td class="success">100%</td>
+<td>3.989s</td>
+<td class="failures">28%</td>
 </tr>
 <tr>
 <td class="success">
@@ -95,18 +163,18 @@
 <td>3</td>
 <td>0</td>
 <td>0</td>
-<td>0.010s</td>
+<td>0.024s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="packages/seminars.service.html">seminars.service</a>
 </td>
 <td>12</td>
+<td>5</td>
 <td>0</td>
-<td>0</td>
-<td>0.151s</td>
-<td class="success">100%</td>
+<td>0.192s</td>
+<td class="failures">58%</td>
 </tr>
 </tbody>
 </table>
@@ -136,53 +204,33 @@
 <td class="success">-</td>
 </tr>
 <tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests.html">seminars.repository.ConstellationRepositoryIntegrationTest$DataIsolationTests</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>1.535s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
+<td class="failures">
 <a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests.html">seminars.repository.ConstellationRepositoryIntegrationTest$RepositoryIntegrationTests</a>
 </td>
 <td>4</td>
+<td>4</td>
 <td>0</td>
-<td>0</td>
-<td>0.036s</td>
-<td class="success">100%</td>
+<td>0.008s</td>
+<td class="failures">0%</td>
 </tr>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="classes/seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests.html">seminars.repository.ConstellationRepositoryIntegrationTest$ServiceIntegrationTests</a>
 </td>
 <td>6</td>
+<td>6</td>
 <td>0</td>
-<td>0</td>
-<td>0.072s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryMockTest$ClearMockTests.html">seminars.repository.ConstellationRepositoryMockTest$ClearMockTests</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.016s</td>
-<td class="success">100%</td>
+<td>0.037s</td>
+<td class="failures">0%</td>
 </tr>
 <tr>
 <td class="success">
 <a href="classes/seminars.repository.ConstellationRepositoryMockTest$CombinedMockTests.html">seminars.repository.ConstellationRepositoryMockTest$CombinedMockTests</a>
 </td>
-<td>2</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0.651s</td>
+<td>3.913s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -192,137 +240,17 @@
 <td>2</td>
 <td>0</td>
 <td>0</td>
-<td>0.011s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryMockTest$DeleteByNameMockTests.html">seminars.repository.ConstellationRepositoryMockTest$DeleteByNameMockTests</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.017s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryMockTest$ExistsByNameMockTests.html">seminars.repository.ConstellationRepositoryMockTest$ExistsByNameMockTests</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.022s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryMockTest$FindByNameMockTests.html">seminars.repository.ConstellationRepositoryMockTest$FindByNameMockTests</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.026s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryMockTest$GetAllConstellationsMockTests.html">seminars.repository.ConstellationRepositoryMockTest$GetAllConstellationsMockTests</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.024s</td>
+<td>0.016s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
 <td class="success">
 <a href="classes/seminars.repository.ConstellationRepositoryMockTest$SaveMockTests.html">seminars.repository.ConstellationRepositoryMockTest$SaveMockTests</a>
 </td>
-<td>3</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0.035s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryUnitTest$BoundaryTests.html">seminars.repository.ConstellationRepositoryUnitTest$BoundaryTests</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.018s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryUnitTest$ClearTests.html">seminars.repository.ConstellationRepositoryUnitTest$ClearTests</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.008s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryUnitTest$CountTests.html">seminars.repository.ConstellationRepositoryUnitTest$CountTests</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.011s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryUnitTest$DeleteByNameTests.html">seminars.repository.ConstellationRepositoryUnitTest$DeleteByNameTests</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.006s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryUnitTest$ExistsByNameTests.html">seminars.repository.ConstellationRepositoryUnitTest$ExistsByNameTests</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.007s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryUnitTest$FindByNameTests.html">seminars.repository.ConstellationRepositoryUnitTest$FindByNameTests</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.006s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryUnitTest$GetAllConstellationsTests.html">seminars.repository.ConstellationRepositoryUnitTest$GetAllConstellationsTests</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.005s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/seminars.repository.ConstellationRepositoryUnitTest$SaveTests.html">seminars.repository.ConstellationRepositoryUnitTest$SaveTests</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.008s</td>
+<td>0.015s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -332,18 +260,18 @@
 <td>3</td>
 <td>0</td>
 <td>0</td>
-<td>0.010s</td>
+<td>0.024s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="classes/seminars.service.ConstellationServiceIntegrationTest.html">seminars.service.ConstellationServiceIntegrationTest</a>
 </td>
 <td>3</td>
+<td>3</td>
 <td>0</td>
-<td>0</td>
-<td>0.052s</td>
-<td class="success">100%</td>
+<td>0.008s</td>
+<td class="failures">0%</td>
 </tr>
 <tr>
 <td class="success">
@@ -352,18 +280,18 @@
 <td>7</td>
 <td>0</td>
 <td>0</td>
-<td>0.080s</td>
+<td>0.176s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="classes/seminars.service.SatelliteServiceTest.html">seminars.service.SatelliteServiceTest</a>
 </td>
 <td>2</td>
+<td>2</td>
 <td>0</td>
-<td>0</td>
-<td>0.019s</td>
-<td class="success">100%</td>
+<td>0.008s</td>
+<td class="failures">0%</td>
 </tr>
 </tbody>
 </table>
@@ -376,7 +304,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.0.0</a> at 11 апр. 2026 г., 10:07:58</p>
+<a href="https://www.gradle.org">Gradle 9.0.0</a> at 19 апр. 2026 г., 22:56:43</p>
 </div>
 </div>
 </body>

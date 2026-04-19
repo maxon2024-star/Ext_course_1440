@@ -1,27 +1,46 @@
 package seminars.constellation;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 import seminars.satellite.Satellite;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "satellite_constellation")
 @Getter
-@ToString
+@Setter
+@ToString(exclude = "satellites") // Исключаем, чтобы не было StackOverflow при логах
+@NoArgsConstructor // Для Hibernate
 public class SatelliteConstellation {
-    private final String constellationName;
-    private final List<Satellite> satellites;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "constellation_name", nullable = false, unique = true)
+    private String constellationName;
+
+    @OneToMany(mappedBy = "constellation", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference // Спасает от бесконечной рекурсии в контроллере
+    private List<Satellite> satellites = new ArrayList<>();
 
     private SatelliteConstellation(Builder builder) {
         this.constellationName = builder.constellationName;
-        this.satellites = builder.satellites;
+        // Копируем спутники и жестко связываем их с группировкой
+        if (builder.satellites != null) {
+            builder.satellites.forEach(this::addSatellite);
+        }
     }
 
-    // Возвращенный метод для динамического добавления спутников
     public void addSatellite(Satellite satellite) {
         if (satellite != null) {
             this.satellites.add(satellite);
+            satellite.setConstellation(this);
         }
     }
 
@@ -34,7 +53,6 @@ public class SatelliteConstellation {
         private List<Satellite> satellites = new ArrayList<>();
 
         public Builder(String constellationName) {
-            // Убрана жесткая валидация пустого имени для совместимости с тестами
             this.constellationName = constellationName;
         }
 

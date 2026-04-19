@@ -3,6 +3,7 @@ package seminars.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import seminars.repository.ConstellationRepository;
 import seminars.satellite.Satellite;
 import seminars.constellation.SatelliteConstellation;
@@ -10,11 +11,11 @@ import seminars.constellation.SatelliteConstellation;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+@Transactional // ВАЖНО: Без этой аннотации изменения состояний и энергии не сохранятся в БД!
 public class ConstellationService {
     private final ConstellationRepository constellationRepository;
 
     public SatelliteConstellation createAndSaveConstellation(String name) {
-        // Изменение: используем Builder вместо конструктора
         SatelliteConstellation constellation = SatelliteConstellation.builder(name).build();
         constellationRepository.save(constellation);
         log.info("Создана спутниковая группировка: {}", name);
@@ -25,6 +26,7 @@ public class ConstellationService {
         constellationRepository.findByName(constellationName).ifPresentOrElse(
                 constellation -> {
                     constellation.addSatellite(satellite);
+                    // Благодаря @Transactional Spring сам сделает UPDATE в базе в конце метода
                     log.info("Добавлен спутник {} в группировку {}", satellite.getName(), constellationName);
                 },
                 () -> log.error("Группировка '{}' не найдена", constellationName)
@@ -38,7 +40,7 @@ public class ConstellationService {
                     log.info("ВЫПОЛНЕНИЕ МИССИЙ ГРУППИРОВКИ {}", constellationName.toUpperCase());
                     log.info("==================================================");
                     for (Satellite satellite : constellation.getSatellites()) {
-                        satellite.executeMission();
+                        satellite.executeMission(); // Изменения энергии сохранятся автоматически
                     }
                 },
                 () -> log.error("Группировка '{}' не найдена", constellationName)
@@ -50,7 +52,7 @@ public class ConstellationService {
         constellationRepository.findByName(constellationName).ifPresentOrElse(
                 constellation -> {
                     for (Satellite satellite : constellation.getSatellites()) {
-                        satellite.activate();
+                        satellite.activate(); // Изменения состояния сохранятся автоматически
                     }
                 },
                 () -> log.error("Группировка '{}' не найдена", constellationName)
@@ -75,6 +77,7 @@ public class ConstellationService {
     }
 
     public int getConstellationCount() {
-        return constellationRepository.count();
+        // ИСПРАВЛЕНИЕ: Явное приведение типа long к int
+        return (int) constellationRepository.count();
     }
 }

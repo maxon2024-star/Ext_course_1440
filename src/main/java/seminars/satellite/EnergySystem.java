@@ -1,14 +1,25 @@
 package seminars.satellite;
 
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
+@Entity
+@Table(name = "energy_system")
 @Getter
+@Setter
 @ToString
+@NoArgsConstructor // Обязательно для Hibernate
 public class EnergySystem {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "battery_level")
     private double batteryLevel;
 
-    // Скрытый конструктор, доступный только Строителю
     private EnergySystem(Builder builder) {
         this.batteryLevel = builder.batteryLevel;
     }
@@ -25,9 +36,8 @@ public class EnergySystem {
         return new Builder();
     }
 
-    // Вложенный класс Строителя
     public static class Builder {
-        private double batteryLevel = 100.0; // Дефолтное значение уровня энергии
+        private double batteryLevel = 100.0;
 
         public Builder batteryLevel(double batteryLevel) {
             if (batteryLevel < 0) {

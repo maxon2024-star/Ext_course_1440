@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SpaceOperationCenterService - Мок тесты" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-04-11T07:07:57.566Z" hostname="ZADEBAAV" time="0.085">
+<testsuite name="SpaceOperationCenterService - Мок тесты" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-04-19T19:56:42.007Z" hostname="ZADEBAAV" time="0.195">
   <properties/>
-  <testcase name="addSatelliteToConstellation с существующей группировкой должен добавлять спутник" classname="seminars.service.ConstellationServiceMockTest" time="0.044"/>
-  <testcase name="executeConstellationMission должен выполнять миссии всех спутников" classname="seminars.service.ConstellationServiceMockTest" time="0.008"/>
-  <testcase name="constellationExists должен возвращать результат из репозитория" classname="seminars.service.ConstellationServiceMockTest" time="0.004"/>
-  <testcase name="activateAllSatellites должен активировать все спутники в группировке" classname="seminars.service.ConstellationServiceMockTest" time="0.005"/>
-  <testcase name="createAndSaveConstellation должен вызывать save на репозитории" classname="seminars.service.ConstellationServiceMockTest" time="0.007"/>
-  <testcase name="getConstellationCount должен возвращать количество из репозитория" classname="seminars.service.ConstellationServiceMockTest" time="0.005"/>
-  <testcase name="addSatelliteToConstellation с несуществующей группировкой не должен выбрасывать исключения" classname="seminars.service.ConstellationServiceMockTest" time="0.007"/>
-  <system-out><![CDATA[2026-04-11T10:07:57.590+03:00  INFO 18828 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : Добавлен спутник Спутник-Тест в группировку Орбита-Тест
+  <testcase name="addSatelliteToConstellation с существующей группировкой должен добавлять спутник" classname="seminars.service.ConstellationServiceMockTest" time="0.088"/>
+  <testcase name="executeConstellationMission должен выполнять миссии всех спутников" classname="seminars.service.ConstellationServiceMockTest" time="0.024"/>
+  <testcase name="constellationExists должен возвращать результат из репозитория" classname="seminars.service.ConstellationServiceMockTest" time="0.01"/>
+  <testcase name="activateAllSatellites должен активировать все спутники в группировке" classname="seminars.service.ConstellationServiceMockTest" time="0.021"/>
+  <testcase name="createAndSaveConstellation должен вызывать save на репозитории" classname="seminars.service.ConstellationServiceMockTest" time="0.011"/>
+  <testcase name="getConstellationCount должен возвращать количество из репозитория" classname="seminars.service.ConstellationServiceMockTest" time="0.006"/>
+  <testcase name="addSatelliteToConstellation с несуществующей группировкой не должен выбрасывать исключения" classname="seminars.service.ConstellationServiceMockTest" time="0.016"/>
+  <system-out><![CDATA[2026-04-19T22:56:42.078+03:00  INFO 33296 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : Добавлен спутник Спутник-Тест в группировку Орбита-Тест
 ✅ Спутник-Тест: Активация успешна
-2026-04-11T10:07:57.614+03:00  INFO 18828 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : === ВЫПОЛНЕНИЕ МИССИЙ ДЛЯ ГРУППИРОВКИ: Орбита-Тест ===
-2026-04-11T10:07:57.615+03:00  INFO 18828 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : ВЫПОЛНЕНИЕ МИССИЙ ГРУППИРОВКИ ОРБИТА-ТЕСТ
-2026-04-11T10:07:57.616+03:00  INFO 18828 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : ==================================================
+2026-04-19T22:56:42.107+03:00  INFO 33296 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : === ВЫПОЛНЕНИЕ МИССИЙ ДЛЯ ГРУППИРОВКИ: Орбита-Тест ===
+2026-04-19T22:56:42.111+03:00  INFO 33296 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : ВЫПОЛНЕНИЕ МИССИЙ ГРУППИРОВКИ ОРБИТА-ТЕСТ
+2026-04-19T22:56:42.112+03:00  INFO 33296 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : ==================================================
 Спутник-Тест: Передача данных со скоростью 500.0 Мбит/с
 Спутник-Тест: Отправил 500.0 Мбит данных!
-2026-04-11T10:07:57.628+03:00  INFO 18828 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : === АКТИВАЦИЯ СПУТНИКОВ В ГРУППИРОВКЕ: Орбита-Тест ===
+2026-04-19T22:56:42.156+03:00  INFO 33296 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : === АКТИВАЦИЯ СПУТНИКОВ В ГРУППИРОВКЕ: Орбита-Тест ===
 ✅ Спутник-Тест: Активация успешна
-2026-04-11T10:07:57.633+03:00  INFO 18828 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : Создана спутниковая группировка: Орбита-Тест
-2026-04-11T10:07:57.648+03:00 ERROR 18828 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : Группировка 'Орбита-Тест' не найдена
+2026-04-19T22:56:42.173+03:00  INFO 33296 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : Создана спутниковая группировка: Орбита-Тест
+2026-04-19T22:56:42.200+03:00 ERROR 33296 --- [space-operation-center] [    Test worker] seminars.service.ConstellationService    : Группировка 'Орбита-Тест' не найдена
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
