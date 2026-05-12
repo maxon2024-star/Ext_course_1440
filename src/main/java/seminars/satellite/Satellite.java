@@ -23,6 +23,12 @@ public abstract class Satellite {
     @Column(nullable = false)
     protected String name;
 
+    @Column(name = "temperature_inside")
+    private Double temperatureInside;
+
+    @Column(name = "temperature_outside")
+    private Double temperatureOutside;
+
     @Embedded
     protected SatelliteState state;
 

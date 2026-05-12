@@ -1,0 +1,8 @@
+server:
+  port: 8082 # REST порт (если понадобится)
+grpc:
+  server:
+    port: 9091
+spring:
+  application:
+    name: telemetry-service

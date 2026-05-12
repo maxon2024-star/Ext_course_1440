@@ -4,6 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Ext_course_1440.iml" filepath="$PROJECT_DIR$/.idea/modules/Ext_course_1440.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Ext_course_1440.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Ext_course_1440.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/telemetry-service/Ext_course_1440.telemetry-service.iml" filepath="$PROJECT_DIR$/.idea/modules/telemetry-service/Ext_course_1440.telemetry-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/telemetry-service/Ext_course_1440.telemetry-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/telemetry-service/Ext_course_1440.telemetry-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/telemetry-service/Ext_course_1440.telemetry-service.test.iml" filepath="$PROJECT_DIR$/.idea/modules/telemetry-service/Ext_course_1440.telemetry-service.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Ext_course_1440.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Ext_course_1440.test.iml" />
     </modules>
   </component>
 </project>
