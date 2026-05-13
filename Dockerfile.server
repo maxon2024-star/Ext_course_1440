@@ -1,5 +1,5 @@
-# Build stage
-FROM gradle:8-jdk21-alpine AS builder
+# Build stage (меняем alpine на jammy)
+FROM gradle:8-jdk21-jammy AS builder
 WORKDIR /build
 
 # Копируем конфигурацию сборки
@@ -10,7 +10,7 @@ COPY src src
 # Собираем проект
 RUN gradle clean bootJar -x test
 
-# Run stage
+# Run stage (оставляем alpine)
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 

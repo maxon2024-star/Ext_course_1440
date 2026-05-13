@@ -1,5 +1,5 @@
-# Build stage
-FROM gradle:8-jdk21-alpine AS builder
+# Build stage (меняем alpine на jammy)
+FROM gradle:8-jdk21-jammy AS builder
 WORKDIR /build
 
 # Копируем конфигурацию сборки
@@ -12,7 +12,7 @@ RUN gradle clean bootJar -x test
 # Распаковываем fat-jar прямо в контейнере-сборщике
 RUN mkdir -p unpacked && cd unpacked && jar -xf ../build/libs/Ext_course_1440-1.0.0.jar
 
-# Run stage
+# Run stage (оставляем alpine для минимального размера итогового образа)
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
