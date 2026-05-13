@@ -7,6 +7,6 @@ RUN gradle :telemetry-service:build -x test --no-daemon
 
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
-COPY --from=build /app/telemetry-service/build/libs/*-SNAPSHOT.jar app.jar
+COPY --from=build /app/telemetry-service/build/libs/telemetry-service-1.0.0.jar app.jar
 EXPOSE 9091
 ENTRYPOINT ["java", "-jar", "app.jar"]

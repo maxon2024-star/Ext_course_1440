@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: net.devh:grpc-client-spring-boot-starter:3.0.0.RELEASE" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="net.devh" artifactId="grpc-client-spring-boot-starter" version="3.0.0.RELEASE" baseVersion="3.0.0.RELEASE" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.devh/grpc-client-spring-boot-starter/3.0.0.RELEASE/21100f09eba76f9acc7f1ffedefbb7c4a08196b6/grpc-client-spring-boot-starter-3.0.0.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
