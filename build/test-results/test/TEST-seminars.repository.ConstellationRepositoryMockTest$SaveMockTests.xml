@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Тесты метода save() с моками" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-04-19T19:56:41.573Z" hostname="ZADEBAAV" time="0.015">
-  <properties/>
-  <testcase name="save_shouldCallWithCorrectConstellation()" classname="seminars.repository.ConstellationRepositoryMockTest$SaveMockTests" time="0.015"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

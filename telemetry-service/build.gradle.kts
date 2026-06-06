@@ -14,6 +14,18 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
+
+    // --- НОВЫЕ ЗАВИСИМОСТИ ДЛЯ KAFKA И LOMBOK ---
+    implementation("org.springframework.kafka:spring-kafka")
+    implementation("org.springframework.retry:spring-retry")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
+
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
+    implementation("com.fasterxml.jackson.core:jackson-databind")
+    // ---------------------------------------------
+
     // Актуальные версии gRPC для Spring Boot 3+
     implementation("net.devh:grpc-server-spring-boot-starter:3.0.0.RELEASE")
     implementation("io.grpc:grpc-protobuf:1.62.2")

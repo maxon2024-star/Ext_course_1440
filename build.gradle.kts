@@ -55,6 +55,12 @@ dependencies {
     implementation("io.grpc:grpc-protobuf:1.62.2")
     implementation("io.grpc:grpc-stub:1.62.2")
     compileOnly("org.apache.tomcat:annotations-api:6.0.53")
+
+    implementation("org.springframework.kafka:spring-kafka")
+
+    implementation("org.springframework.kafka:spring-kafka")
+    implementation("org.springframework.retry:spring-retry") // Для автосоздания DLQ топиков
+    implementation("org.springframework.boot:spring-boot-starter-aop") // Зависимость для корректной работы @RetryableTopic
 }
 
 protobuf {

@@ -7,12 +7,16 @@ services:
     environment:
       - SERVER_PORT=7070
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/space_db
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
     ports:
       - "7070:7070"
     networks:
       - space-network
     depends_on:
-      - postgres
+      postgres:
+        condition: service_started
+      kafka:
+        condition: service_started
     restart: on-failure
     healthcheck:
       test: ["CMD", "nc", "-z", "localhost", "7070"]
@@ -27,12 +31,15 @@ services:
     container_name: mission-service
     depends_on:
       server:
-        condition: service_healthy # Ожидаем, пока healthcheck сервера не вернет success
+        condition: service_healthy
+      postgres:
+        condition: service_started
     environment:
       - SERVER_PORT=8081
-      # Переопределяем URL из application-scheduler.yml на сетевое имя контейнера Docker
       - APP_SPACE_CENTER_SERVICE_URL=http://server:7070/api
-      - SECRET_KEY=${MISSION_SECRET_KEY}
+      - SECRET_KEY=my_super_secret_space_key_123
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/space_db
     ports:
       - "8081:8081"
     networks:
@@ -43,6 +50,11 @@ services:
       context: .
       dockerfile: telemetry-service/Dockerfile
     container_name: telemetry-service
+    environment:
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    depends_on:
+      kafka:
+        condition: service_started
     ports:
       - "9091:9091"
     networks:
@@ -56,10 +68,32 @@ services:
       POSTGRES_PASSWORD: space_password
       POSTGRES_DB: space_db
     ports:
-      - "5440:5432" # Проброс порта (5440 на хосте -> 5432 в контейнере)
+      - "5440:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     restart: unless-stopped
+    networks:
+      - space-network
+
+  kafka:
+    image: confluentinc/cp-kafka:7.6.1
+    container_name: space_kafka
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: 'CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT'
+      KAFKA_ADVERTISED_LISTENERS: 'PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092'
+      KAFKA_LISTENERS: 'PLAINTEXT://kafka:9092,CONTROLLER://kafka:9093,PLAINTEXT_HOST://0.0.0.0:29092'
+      KAFKA_PROCESS_ROLES: 'broker,controller'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka:9093'
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      CLUSTER_ID: 'MkU3OEVBNTcwNTJENDM2Qk'
+    ports:
+      - "9092:9092"
+      - "29092:29092"
     networks:
       - space-network
 
