@@ -38,3 +38,18 @@ grpc:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+# Настройка логирования для нагрузочного тестирования и дебага
+logging:
+  level:
+    root: INFO
+    # Указываем пакет твоего проекта для более детального вывода (DEBUG)
+    seminars: DEBUG
+    org.springframework.web: INFO
+  file:
+    # Все логи будут сохраняться в отдельный файл
+    name: logs/space-operation.log
+  pattern:
+    # Формат вывода: Дата Время [Поток] УРОВЕНЬ Класс - Сообщение
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
