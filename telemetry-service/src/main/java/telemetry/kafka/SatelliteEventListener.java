@@ -1,47 +1,64 @@
 package telemetry.kafka;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.annotation.RetryableTopic;
-import org.springframework.kafka.support.KafkaHeaders;
-import org.springframework.messaging.handler.annotation.Header;
-import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.retry.annotation.Backoff;
-import org.springframework.stereotype.Service;
-
-// ИСПРАВЛЕННЫЙ ИМПОРТ:
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import telemetry.dto.SatelliteEvent;
+import telemetry.entity.InboxEvent;
+import telemetry.repository.InboxRepository;
+import telemetry.service.TelemetryGeneratorService;
+
+import java.time.Instant;
 
 @Slf4j
-@Service
+@Component
+@RequiredArgsConstructor
 public class SatelliteEventListener {
 
-    @RetryableTopic(
-            attempts = "3",
-            backoff = @Backoff(delay = 2000, multiplier = 2.0),
-            autoCreateTopics = "true",
-            dltTopicSuffix = ".dlt"
-    )
-    @KafkaListener(topics = "satellite-events", groupId = "telemetry-group")
-    public void handleSatelliteEvent(@Payload SatelliteEvent event,
-                                     @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
-        log.info("Получено событие из топика [{}]: {}", topic, event);
+    private final InboxRepository inboxRepository;
+    private final TelemetryGeneratorService telemetryGeneratorService;
+    private final ObjectMapper objectMapper;
 
-        if ("ERROR".equals(event.getConstellationName())) {
-            throw new RuntimeException("Ошибка обработки события! Отправляем на повтор, а затем в DLQ.");
+    @Transactional // Атомарно: или обновим телеметрию и запишем в inbox, или произойдет откат
+    @KafkaListener(topics = "satellite-events", groupId = "telemetry-group") // Топик должен совпадать с отправителем
+    public void handleSatelliteEvent(String messagePayload) {
+        try {
+            SatelliteEvent event = objectMapper.readValue(messagePayload, SatelliteEvent.class);
+
+            if (event.getEventId() == null) {
+                log.warn("Событие пришло без eventId. Идемпотентность невозможна: {}", messagePayload);
+                return;
+            }
+
+            // Проверка на идемпотентность (Паттерн Inbox)
+            if (inboxRepository.existsById(event.getEventId())) {
+                log.info("Событие {} уже было обработано. Пропускаем дубликат.", event.getEventId());
+                return;
+            }
+
+            // Бизнес-логика обработки (используем правильные геттеры из DTO)
+            if ("CREATED".equals(event.getEventType())) {
+                telemetryGeneratorService.addSatellite(event.getSatelliteDetails());
+            } else if ("DELETED".equals(event.getEventType())) {
+                telemetryGeneratorService.removeSatellite(event.getSatelliteDetails());
+            }
+
+            // Запись в Inbox для предотвращения повторной обработки в будущем
+            InboxEvent inboxEvent = new InboxEvent(
+                    event.getEventId(),
+                    event.getSatelliteDetails(),
+                    event.getEventType(),
+                    Instant.now()
+            );
+            inboxRepository.save(inboxEvent);
+            log.info("Успешно обработано событие {}", event.getEventId());
+
+        } catch (Exception e) {
+            log.error("Ошибка при обработке сообщения из Kafka: {}", messagePayload, e);
+            throw new RuntimeException(e); // Заставит Kafka повторить доставку сообщения
         }
-
-        if ("CREATED".equals(event.getEventType())) {
-            log.info("Телеметрия: Регистрируем новый спутник в системе наблюдения...");
-        } else if ("DELETED".equals(event.getEventType())) {
-            log.info("Телеметрия: Удаляем спутник из системы наблюдения...");
-        }
-    }
-
-    @KafkaListener(topics = "satellite-events.dlt", groupId = "telemetry-dlq-group")
-    public void handleDlq(@Payload SatelliteEvent event,
-                          @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
-        log.error("ВНИМАНИЕ! Сообщение попало в DLQ (Мертвая очередь) топик [{}]. " +
-                "Событие: {}. Требуется ручное вмешательство или логирование.", topic, event);
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SatelliteServiceImpl implements SatelliteService {
 
-    // Внедряем все бины, реализующие SatelliteFactory
+    // Оставляем только список внедренных фабрик
     private final List<SatelliteFactory> factories;
 
     @Override

@@ -16,3 +16,18 @@ app:
         constellationName: "Орбита-1"
         satelliteName: "Связь-1"
         cron: "*/30 * * * * *" # Каждые 30 секунд (для быстрого теста)
+
+# Настройка логирования для нагрузочного тестирования и дебага
+logging:
+  level:
+    root: INFO
+    # Указываем пакет твоего проекта для более детального вывода (DEBUG)
+    seminars: DEBUG
+    org.springframework.web: INFO
+  file:
+    # Все логи будут сохраняться в отдельный файл
+    name: logs/space-operation-scheduler.log
+  pattern:
+    # Формат вывода: Дата Время [Поток] УРОВЕНЬ Класс - Сообщение
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

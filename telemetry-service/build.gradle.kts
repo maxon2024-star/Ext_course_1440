@@ -15,7 +15,12 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
 
-    // --- НОВЫЕ ЗАВИСИМОСТИ ДЛЯ KAFKA И LOMBOK ---
+    // --- ДОБАВЛЕННЫЕ ЗАВИСИМОСТИ ДЛЯ INBOX (БД) ---
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtimeOnly("org.postgresql:postgresql")
+    // ----------------------------------------------
+
+    // --- ЗАВИСИМОСТИ ДЛЯ KAFKA И LOMBOK ---
     implementation("org.springframework.kafka:spring-kafka")
     implementation("org.springframework.retry:spring-retry")
     implementation("org.springframework.boot:spring-boot-starter-aop")
@@ -32,7 +37,6 @@ dependencies {
     implementation("io.grpc:grpc-stub:1.62.2")
     compileOnly("org.apache.tomcat:annotations-api:6.0.53") // Для генерации Java 9+
 }
-
 protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:3.25.1"
