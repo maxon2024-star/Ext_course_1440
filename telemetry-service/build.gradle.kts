@@ -35,7 +35,9 @@ dependencies {
     implementation("net.devh:grpc-server-spring-boot-starter:3.0.0.RELEASE")
     implementation("io.grpc:grpc-protobuf:1.62.2")
     implementation("io.grpc:grpc-stub:1.62.2")
-    compileOnly("org.apache.tomcat:annotations-api:6.0.53") // Для генерации Java 9+
+    compileOnly("org.apache.tomcat:annotations-api:6.0.53")
+    runtimeOnly("org.postgresql:postgresql")
+    runtimeOnly("org.postgresql:postgresql") // Для генерации Java 9+
 }
 protobuf {
     protoc {

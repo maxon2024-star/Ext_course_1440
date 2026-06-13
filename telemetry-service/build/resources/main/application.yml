@@ -6,6 +6,15 @@ grpc:
 spring:
   application:
     name: telemetry-service
+  datasource:
+    url: jdbc:postgresql://postgres:5432/space_db
+    username: space_user
+    password: space_password
+    driver-class-name: org.postgresql.Driver
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: false
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     consumer:

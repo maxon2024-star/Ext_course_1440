@@ -3,9 +3,13 @@ package seminars.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import seminars.constellation.SatelliteConstellation;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Map;
 import java.util.Optional;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Repository
@@ -39,4 +43,9 @@ public interface ConstellationRepository extends JpaRepository<SatelliteConstell
     default void clear() {
         deleteAll();
     }
+
+    @Modifying
+    @Transactional
+    @Query(value = "INSERT INTO satellite_constellation (constellation_name) VALUES (:name) ON CONFLICT (constellation_name) DO NOTHING", nativeQuery = true)
+    void insertConstellationIfNotExists(@Param("name") String name);
 }

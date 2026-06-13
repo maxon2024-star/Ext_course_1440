@@ -9,6 +9,7 @@ import seminars.dto.AddSatelliteRequest;
 import seminars.dto.MissionRequest;
 import seminars.dto.SatelliteEvent;
 import seminars.entity.OutboxEvent;
+import seminars.repository.ConstellationRepository;
 import seminars.repository.OutboxRepository;
 import seminars.satellite.Satellite;
 import seminars.annotation.LogExecutionTime;
@@ -21,6 +22,7 @@ public class SpaceOperationCenterService {
     private final ConstellationService constellationService;
     private final SatelliteService satelliteService;
     private final OutboxRepository outboxRepository;
+    private final ConstellationRepository constellationRepository;
     private final ObjectMapper objectMapper;
 
     @LogExecutionTime
@@ -28,9 +30,8 @@ public class SpaceOperationCenterService {
     public void addSatellite(AddSatelliteRequest request) {
         log.info("ФАСАД: Обработка запроса на добавление спутника в группировку {}", request.getConstellationName());
 
-        if (!constellationService.constellationExists(request.getConstellationName())) {
-            constellationService.createAndSaveConstellation(request.getConstellationName());
-        }
+        // Атомарная вставка, база сама игнорирует дубликаты под нагрузкой
+        constellationRepository.insertConstellationIfNotExists(request.getConstellationName());
 
         Satellite newSatellite = satelliteService.createSatellite(request.getSatelliteParam());
         constellationService.addSatelliteToConstellation(request.getConstellationName(), newSatellite);
@@ -49,10 +50,6 @@ public class SpaceOperationCenterService {
     public void deleteSatellite(String constellationName, String satelliteId) {
         log.info("ФАСАД: Обработка запроса на удаление спутника {} из {}", satelliteId, constellationName);
 
-        // Логика удаления спутника из группировки (если она реализована в constellationService)
-        // constellationService.removeSatellite(...)
-
-        // Паттерн Outbox: событие удаления
         SatelliteEvent event = new SatelliteEvent();
         event.setEventType("DELETED");
         event.setConstellationName(constellationName);
